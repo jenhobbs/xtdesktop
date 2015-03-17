@@ -36,6 +36,14 @@ include("desktopMenuBar");
 var _globalStyle = 'font: 75 bold 10pt "Verdana"; color: rgb(138, 138, 138); selection-color: rgb(36, 146, 222); background-color: rgb(255, 255, 255);';
 // ================================================
 
+var mainwindowStyle = ["* {",
+    "font-family: Helvetica, sans-serif;", 
+    "background-color: rgb(250, 250, 250);",
+    "selection-color: rgb(138, 138, 138);",
+"}"
+].join(" ");
+mainwindow.styleSheet += mainwindowStyle;
+
 var _desktopStack;
 var _open = qsTr("Open...");
 var _dtTimer;

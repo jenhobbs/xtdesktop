@@ -18,7 +18,7 @@ function setupDesktopMenu() {
   _mainMenu.addColumn(qsTr("MAIN MENU"), -1, Qt.AlignLeft, true, "menuItem");
 /* ============================================*/
 /*  Left Menu widgets Stylesheet               */
-  var _style = _globalStyle + ' selection-color: rgb(36, 146, 222); selection-background-color: rgb(255, 255, 255); XTreeWidget::branch { border-image: none; };';
+  var _style = _globalStyle + ' selection-color: rgb(100, 100, 100); selection-background-color: rgb(255, 255, 255); XTreeWidget::branch { border-image-source: none;};border-style: none;';
 /* ============================================*/
   _mainMenu.setStyleSheet(_style);
   _shortcutMenu.setStyleSheet(_style);
@@ -41,7 +41,8 @@ function setupDesktopMenu() {
     _employee.text = _employeeData.value("crmacct_name");
     _employee.wordWrap = true;
   }
-  _employee.setStyleSheet('font: 75 bold 10pt "Verdana";');
+  _employee.setStyleSheet('font: 50 regular "Verdana";');
+_employeeImage.setStyleSheet("border: none;");
 
   _mainMenu["itemClicked(XTreeWidgetItem*, int)"].connect(mainMenuClicked);
   _shortcutMenu["itemClicked(XTreeWidgetItem*, int)"].connect(shortcutMenuClicked);
@@ -62,7 +63,7 @@ function shortcutsMenuPopulateList() {
   var _sc = toolbox.executeDbQuery("desktop", "userShortcuts", new Object);
 
 // Populate shortcuts menu per Treeview item so it matches Main Menu visually
-  while(_sc.next()) {
+  _shortcutMenu.populate(_sc); {
     var menuItem = new XTreeWidgetItem(_shortcutMenu, _sc.value("usrpref_id"), _sc.value("usrpref_id"), _sc.value("menuShortcuts"));
   }
 }
