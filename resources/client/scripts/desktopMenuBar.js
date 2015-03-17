@@ -16,12 +16,9 @@ function setupDesktopMenu() {
   _employee = mainwindow.findChild("_employee");
 
   _mainMenu.addColumn(qsTr("MAIN MENU"), -1, Qt.AlignLeft, true, "menuItem");
-/* ============================================*/
-/*  Left Menu widgets Stylesheet               */
-  var _style = _globalStyle + ' selection-color: rgb(100, 100, 100); selection-background-color: rgb(255, 255, 255); XTreeWidget::branch { border-image-source: none;};border-style: none;';
-/* ============================================*/
-  _mainMenu.setStyleSheet(_style);
-  _shortcutMenu.setStyleSheet(_style);
+
+  _mainMenu.setStyleSheet(desktopMenuStyle);
+  _shortcutMenu.setStyleSheet(desktopMenuStyle);
   _mainMenu.alternatingRowColors = false;
   _shortcutMenu.alternatingRowColors = false;
   _shortcutMenu.maximumHeight = 150;
@@ -41,8 +38,6 @@ function setupDesktopMenu() {
     _employee.text = _employeeData.value("crmacct_name");
     _employee.wordWrap = true;
   }
-  _employee.setStyleSheet('font: 50 regular "Verdana";');
-_employeeImage.setStyleSheet("border: none;");
 
   _mainMenu["itemClicked(XTreeWidgetItem*, int)"].connect(mainMenuClicked);
   _shortcutMenu["itemClicked(XTreeWidgetItem*, int)"].connect(shortcutMenuClicked);

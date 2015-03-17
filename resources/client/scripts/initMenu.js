@@ -9,6 +9,7 @@
  */
 
 // Import code from related scripts
+include ("stylesheets");
 include("dockBankBal");
 include("dockExtensions");
 include("dockGLAccounts");
@@ -31,18 +32,7 @@ include("dockSendMessage");
 include("dockUserOnline");
 include("desktopMenuBar");
 
-// ================================================
-// xtDesktop global stylesheet can be maintained from this string 
-var _globalStyle = 'font: 75 bold 10pt "Verdana"; color: rgb(138, 138, 138); selection-color: rgb(36, 146, 222); background-color: rgb(255, 255, 255);';
-// ================================================
-
-var mainwindowStyle = ["* {",
-    "font-family: Helvetica, sans-serif;", 
-    "background-color: rgb(250, 250, 250);",
-    "selection-color: rgb(138, 138, 138);",
-"}"
-].join(" ");
-mainwindow.styleSheet += mainwindowStyle;
+mainwindow.styleSheet += generalStyle;
 
 var _desktopStack;
 var _open = qsTr("Open...");
@@ -219,7 +209,7 @@ function addDesktop(uiName, imageName, privilege)
 {
   // Get the UI and add to desktop stack
   var desktop = toolbox.loadUi(uiName);
-  desktop.setStyleSheet(_globalStyle);
+  desktop.setStyleSheet(generalStyle);
   _desktopStack.addWidget(desktop);
   _windows[_windows.length] = desktop;
   addToolBarAction(desktop.windowTitle, imageName, privilege);
