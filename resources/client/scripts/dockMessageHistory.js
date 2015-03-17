@@ -149,7 +149,7 @@ function myOpen()
     params.msg_id = _messageHistory.id();
     var q = "SELECT msguser_id "
           + "FROM msguser "
-          + "WHERE (msguser_msg_id = <? value(\"msg_id\") ?>);";
+          + "WHERE (msguser_msg_id = <? value('msg_id') ?>);";
     var data = toolbox.executeQuery(q, params);
     if (data.first())
       params.msguser_id = data.value("msguser_id");
