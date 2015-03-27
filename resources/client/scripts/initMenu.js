@@ -47,6 +47,7 @@ var _windows = new Array();
 var _hasSavedState = settingsValue("hasSavedState").length > 0;
 var _vToolBar = new Object;
 var _vToolBarActions = new Array();
+var showDashboardAnything = false;
 
 var _mainMenu;
 var _shortcuts;
@@ -126,17 +127,19 @@ if (_desktopParent)
   addToolBarAction(qsTr("Welcome"), "home_32");
   _vToolBarActions[0].checked = true;
 
-  var _home = new QWebView(mainwindow);
-  _home["loadFinished(bool)"].connect(missingxTupleServer);
-  _home["linkClicked(const QUrl &)"].connect(openUrl);
-  var homeURL = "https://" + metrics.value("WebappHostname")
-              + ":" + metrics.value("WebappPort")
-              + "/" + mainwindow.databaseURL().split("/")[3];
-              + "/npm/xtuple-dashboard-anything/public/index.html";
-  _home.load(new QUrl(homeURL));
-  _home.page().linkDelegationPolicy = QWebPage.DelegateAllLinks;
-  _desktopStack.addWidget(_home);
-  addToolBarAction(qsTr("Dashboard"), "home_32");
+  if (showDashboardAnything) {
+    var _home = new QWebView(mainwindow);
+    _home["loadFinished(bool)"].connect(missingxTupleServer);
+    _home["linkClicked(const QUrl &)"].connect(openUrl);
+    var homeURL = "https://" + metrics.value("WebappHostname")
+                + ":" + metrics.value("WebappPort")
+                + "/" + mainwindow.databaseURL().split("/")[3];
+                + "/npm/xtuple-dashboard-anything/public/index.html";
+    _home.load(new QUrl(homeURL));
+    _home.page().linkDelegationPolicy = QWebPage.DelegateAllLinks;
+    _desktopStack.addWidget(_home);
+    addToolBarAction(qsTr("Dashboard"), "home_32");
+  }
 
   // Initialize additional desktop UIs and Dock Widgets
   // (Init functions come from the code pulled in by the include statements)
