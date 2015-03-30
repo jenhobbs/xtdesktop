@@ -8,6 +8,8 @@
  * to be bound by its terms.
  */
 
+debugger;
+
 // Import code from related scripts
 include("dockBankBal");
 include("dockExtensions");
@@ -32,7 +34,7 @@ include("dockUserOnline");
 include("desktopMenuBar");
 
 // ================================================
-// xtDesktop global stylesheet can be maintained from this string 
+// xtDesktop global stylesheet can be maintained from this string
 var _globalStyle = 'font: 75 bold 10pt "Verdana"; color: rgb(138, 138, 138); selection-color: rgb(36, 146, 222); background-color: rgb(255, 255, 255);';
 // ================================================
 
@@ -45,6 +47,7 @@ var _windows = new Array();
 var _hasSavedState = settingsValue("hasSavedState").length > 0;
 var _vToolBar = new Object;
 var _vToolBarActions = new Array();
+var showDashboardAnything = false;
 
 var _mainMenu;
 var _shortcuts;
@@ -78,122 +81,117 @@ _desktopLayout.addWidget(_desktopStack);
 _desktopWidget.setLayout(_desktopLayout);
 var _desktopParent;
 
-// if this handleNewWindow overload exists then GUIClient is a QMdiArea
+// only show desktop when in free floating mode
 if (mainwindow.showTopLevel())
   _desktopParent = mainwindow;
-// disable desktop when inside workspace mode
-//else if ("handleNewWindow(QWidget*,Qt::WindowModality,bool)" in mainwindow)
-//  _desktopParent = toolbox.openWindow("desktop", mainwindow);
 
 if (_desktopParent)
 {
-//_desktopParent.setCentralWidget(_desktopStack);
-_desktopParent.setCentralWidget(_desktopWidget);
-_vToolBar = new QToolBar(_desktopParent);
-_desktopParent.addToolBar(Qt.LeftToolBarArea, _vToolBar);
+  _desktopParent.setCentralWidget(_desktopWidget);
+  _vToolBar = new QToolBar(_desktopParent);
+  _desktopParent.addToolBar(Qt.LeftToolBarArea, _vToolBar);
 
-// Initialise Menu Bar items
-setupDesktopMenu();
+  // Initialise Menu Bar items
+  setupDesktopMenu();
 
-// Intialize the left toolbar (as of xtDesktop 4.0.0 no longer visible but the toolbar actions are still used)
-_vToolBar.objectName = "_vToolBar";
-_vToolBar.windowTitle = "Desktop Toolbar";
-_vToolBar.floatable = false;
-_vToolBar.movable = false;
-_vToolBar.visible = false;  // Turn off left toolbar and replace with menus
-_vToolBar.toolButtonStyle = Qt.ToolButtonTextOnly;
+  // Intialize the left toolbar (as of xtDesktop 4.0.0 no longer visible but the toolbar actions are still used)
+  _vToolBar.objectName = "_vToolBar";
+  _vToolBar.windowTitle = "Desktop Toolbar";
+  _vToolBar.floatable = false;
+  _vToolBar.movable = false;
+  _vToolBar.visible = false;  // Turn off left toolbar and replace with menus
+  _vToolBar.toolButtonStyle = Qt.ToolButtonTextOnly;
 
-// Initialize Desktop
-// Set up browser for Welcome Page
-var _welcome = new QWebView(mainwindow);
-var firstURL = metrics.value("desktop/welcome");
-var databaseURL = mainwindow.databaseURL();
-var string =  databaseURL.split("/");
-var databaseName = string[3];
-var hostName = string[2].substring(0, string[2].indexOf(":"))
-var serverVersion = metrics.value("ServerVersion");
-var application = metrics.value("Application");
-var secondURL = firstURL + 
-"?client=desktop" + 
-"&hostname=" + hostName +  
-"&organization=" + databaseName +
-"&edition=" + application + 
-"&version=" + serverVersion;
-_welcome.objectName = "_welcome";
-var url = new QUrl(secondURL);
-_welcome["loadFinished(bool)"].connect(loadLocalHtml);
-_welcome["linkClicked(const QUrl &)"].connect(openUrl);
-_welcome.load(url);
-_welcome.page().linkDelegationPolicy = QWebPage.DelegateAllLinks;
-_desktopStack.addWidget(_welcome);
-addToolBarAction(qsTr("Welcome"), "home_32");
-_vToolBarActions[0].checked = true;
+  // Initialize Desktop
+  // Set up browser for Welcome Page
+  var _welcome = new QWebView(mainwindow);
+  var welcomeUrl = (function () {
+    var databaseURL  = mainwindow.databaseURL(),
+        string       = databaseURL.split("/"),
+        hostName     = string[2].substring(0, string[2].indexOf(":")),
+        databaseName = string[3],
+        urlString = metrics.value("desktop/welcome")
+                  + "?client=desktop" + "&hostname=" + hostName
+                  + "&organization=" + databaseName
+                  + "&edition=" + metrics.value("Application")
+                  + "&version=" + metrics.value("ServerVersion")
+    ;
+    return new QUrl(urlString);
+  })();
+  _welcome.objectName = "_welcome";
+  _welcome["loadFinished(bool)"].connect(loadLocalHtml);
+  _welcome["linkClicked(const QUrl &)"].connect(openUrl);
+  _welcome.load(welcomeUrl);
+  _welcome.page().linkDelegationPolicy = QWebPage.DelegateAllLinks;
+  _desktopStack.addWidget(_welcome);
+  addToolBarAction(qsTr("Welcome"), "home_32");
+  _vToolBarActions[0].checked = true;
 
-// Set up browser for Home Page / Dashboard
-var _home =  new QWebView(mainwindow);
-var db = toolbox.executeQuery("SELECT current_database() AS db;");
-if (db.first())
-  var homeURL = "https://" + metrics.value("WebappHostname") + ":" + metrics.value("WebappPort") +
-               "/" + db.value("db") + "/npm/xtuple-dashboard-anything/public/index.html";  // Dashboard xTuple Server Url
-_home["loadFinished(bool)"].connect(missingxTupleServer);
-_home["linkClicked(const QUrl &)"].connect(openUrl);
-_home.load(new QUrl(homeURL));
-_home.page().linkDelegationPolicy = QWebPage.DelegateAllLinks;
-_desktopStack.addWidget(_home);
-addToolBarAction(qsTr("Dashboard"), "home_32");
+  if (showDashboardAnything) {
+    var _home = new QWebView(mainwindow);
+    _home["loadFinished(bool)"].connect(missingxTupleServer);
+    _home["linkClicked(const QUrl &)"].connect(openUrl);
+    var homeURL = "https://" + metrics.value("WebappHostname")
+                + ":" + metrics.value("WebappPort")
+                + "/" + mainwindow.databaseURL().split("/")[3];
+                + "/npm/xtuple-dashboard-anything/public/index.html";
+    _home.load(new QUrl(homeURL));
+    _home.page().linkDelegationPolicy = QWebPage.DelegateAllLinks;
+    _desktopStack.addWidget(_home);
+    addToolBarAction(qsTr("Dashboard"), "home_32");
+  }
 
-// Initialize additional desktop UIs and Dock Widgets
-// (Init functions come from the code pulled in by the include statements)
-addDesktop("desktopCRM", "clients_32", "ViewCRMDesktop");
-initDockTodo();
-initDockAccounts();
-initDockMyCntcts();
+  // Initialize additional desktop UIs and Dock Widgets
+  // (Init functions come from the code pulled in by the include statements)
+  addDesktop("desktopCRM", "clients_32", "ViewCRMDesktop");
+  initDockTodo();
+  initDockAccounts();
+  initDockMyCntcts();
 
-addDesktop("desktopSales", "reward_32", "ViewSalesDesktop");
-initDockSalesAct();
-initDockSalesHist();
-initDockSalesOpen();
+  addDesktop("desktopSales", "reward_32", "ViewSalesDesktop");
+  initDockSalesAct();
+  initDockSalesHist();
+  initDockSalesOpen();
 
-addDesktop("desktopAccounting", "accounting_32", "ViewAccountingDesktop");
-initDockPayables();
-initDockReceivables();
-initDockBankBal();
-initDockGLAccounts();
+  addDesktop("desktopAccounting", "accounting_32", "ViewAccountingDesktop");
+  initDockPayables();
+  initDockReceivables();
+  initDockBankBal();
+  initDockGLAccounts();
 
-addDesktop("desktopPurchase", "order_32", "ViewPurchaseDesktop");
-initDockPurchAct();
-initDockPurchHist();
-initDockPurchOpen();
+  addDesktop("desktopPurchase", "order_32", "ViewPurchaseDesktop");
+  initDockPurchAct();
+  initDockPurchHist();
+  initDockPurchOpen();
 
-addDesktop("desktopManufacture", "industry_32", "ViewManufactureDesktop");
-initDockMfgAct();
-initDockMfgHist();
-initDockMfgOpen();
+  addDesktop("desktopManufacture", "industry_32", "ViewManufactureDesktop");
+  initDockMfgAct();
+  initDockMfgHist();
+  initDockMfgOpen();
 
-addDesktop("desktopSocial", "social", "viewSocialDesktop");
-initDockUserOnline();
-initDockMessageHistory();
-initDockSendMessage();
+  addDesktop("desktopSocial", "social", "viewSocialDesktop");
+  initDockUserOnline();
+  initDockMessageHistory();
+  initDockSendMessage();
 
-var maintWin = addDesktop("desktopMaintenance", "gear_32", "ViewMaintenanceDesktop");
-initDockExtensions();
-//initDockUserOnline();
+  var maintWin = addDesktop("desktopMaintenance", "gear_32", "ViewMaintenanceDesktop");
+  initDockExtensions();
 
-// Hack to fix icon size problem until next core release
-var maintToolbar = maintWin.findChild("_toolbar");
-_vToolBar.iconSize = maintToolbar.iconSize;
-maintWin.removeToolBar(maintToolbar);
+  // Hack to fix icon size problem until next core release
+  var maintToolbar = maintWin.findChild("_toolbar");
+  _vToolBar.iconSize = maintToolbar.iconSize;
+  maintWin.removeToolBar(maintToolbar);
 
-// Handle window actions
-_menuWindow.aboutToShow.connect(prepareWindowMenu);
+  // Handle window actions
+  _menuWindow.aboutToShow.connect(prepareWindowMenu);
 
-// Change behavior of item site button if commercial edition
-if (metrics.boolean("MultiWhs"))
-{
-  var button = mainwindow.findChild("_sites");
-  button.label = qsTr("Sites");
-  button.actionName = "im.warehouses";
-}
+  // Change behavior of item site button if commercial edition
+  if (metrics.boolean("MultiWhs"))
+  {
+    var button = mainwindow.findChild("_sites");
+    button.label = qsTr("Sites");
+    button.actionName = "im.warehouses";
+  }
 }
 else
 {
@@ -211,12 +209,16 @@ function addDesktop(uiName, imageName, privilege)
 {
   // Get the UI and add to desktop stack
   var desktop = toolbox.loadUi(uiName);
-  desktop.setStyleSheet(_globalStyle);
-  _desktopStack.addWidget(desktop);
-  _windows[_windows.length] = desktop;
-  addToolBarAction(desktop.windowTitle, imageName, privilege);
-  desktop.restoreState();
-  
+  if (desktop) {
+    desktop.setStyleSheet(_globalStyle);
+    _desktopStack.addWidget(desktop);
+    _windows[_windows.length] = desktop;
+    addToolBarAction(desktop.windowTitle, imageName, privilege);
+    desktop.restoreState();
+  }
+  else {
+    print('xtdesktop.initMenu could not addDesktop(' + uiName + ')');
+  }
   return desktop;
 }
 
@@ -231,25 +233,28 @@ function addToolBarAction(label, imageName, privilege)
 
   // Create the action (add to menu not seen to ensure priv rescans work)
   var act = _menuToolBar.addAction(icn, label);
-  act.checkable = true;
-  if (privilege)
-  {
-    act.setEnabled(privileges.check(privilege));
-    act.setData(privilege);
+  if (act) {
+    act.checkable = true;
+    if (privilege)
+    {
+      act.setEnabled(privileges.check(privilege));
+      act.setData(privilege);
+    }
+
+    _vToolBar.addAction(act);
+    _vToolBarActions[_vToolBarActions.length] = act;
+    _vToolBar["actionTriggered(QAction*)"].connect(toolbarActionTriggered);
+
+    if (!privilege || privileges.check(privilege))
+      var menuItem = new XTreeWidgetItem(_mainMenu, _vToolBarActions.length, _vToolBarActions.length, qsTr(label));
   }
-
-  // Add to toolbar
-  _vToolBar.addAction(act);
-  _vToolBarActions[_vToolBarActions.length] = act;
-  _vToolBar["actionTriggered(QAction*)"].connect(toolbarActionTriggered);
-
-  // Add to the Main Menu list if user has privileges
-  if (!privilege || privileges.check(privilege))
-    var menuItem = new XTreeWidgetItem(_mainMenu, _vToolBarActions.length, _vToolBarActions.length, qsTr(label));
+  else {
+    print('addToolbarAction() could not add ' + label);
+  }
 }
 
 /*!
-  Loads a local HTML page from the database if the xTuple weclome page
+  Loads a local HTML page from the database if the xTuple welcome page
   fails to load.
 */
 function loadLocalHtml(ok)
