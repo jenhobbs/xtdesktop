@@ -1,4 +1,8 @@
-../packages/xtdesktop-3.7.0.gz: FORCE
-	cd .. ; gnutar czf packages/xtdesktop-3.7.0.gz -h -w --format gnu --exclude CVS --exclude .\* --exclude Makefile resources
+VER = 4.0.0
+EXCLUDE = --exclude Makefile --exclude .\*
+TAROPTS = -h
+
+all: FORCE
+	cd .. && tar czf packages/xtdesktop-$(VER).gz $(TAROPTS) $(EXCLUDE) resources
 
 FORCE:

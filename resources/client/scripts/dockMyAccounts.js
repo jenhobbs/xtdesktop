@@ -10,17 +10,16 @@
 
 var _dockMyaccounts;
 var _accountList;
-var _accountListIsDirty = true;
 
 /*!
   Initializes the My Accounts dock widget and places it in the main window.
 */
 function initDockAccounts()
 {
+  var _accountListIsDirty = true;
   _dockMyaccounts = mainwindow.findChild("_dockMyaccounts");
   _accountList = mainwindow.findChild("_accountList");
 
-  // Set columns on list
   _accountList.addColumn(qsTr("Number"), XTreeWidget.itemColumn, Qt.AlignLeft,  false, "crmacct_number");
   _accountList.addColumn(qsTr("Name"), -1, Qt.AlignLeft,  true, "crmacct_name");
   _accountList.addColumn(qsTr("Contact"), -1, Qt.AlignLeft  , false, "cntct_name" );
@@ -32,7 +31,6 @@ function initDockAccounts()
   _accountList.addColumn(qsTr("Country"), XTreeWidget.orderColumn, Qt.AlignLeft  , false, "addr_country" );
   _accountList.addColumn(qsTr("Postal Code"), XTreeWidget.docTypeColumn, Qt.AlignLeft  , false, "addr_postalcode" );
 
-  // Connect signals and slots
   mainwindow.crmAccountsUpdated.connect(refreshMyAccts);
   mainwindow.customersUpdated.connect(refreshMyAccts);
   mainwindow.vendorsUpdated.connect(refreshMyAccts);
@@ -43,7 +41,7 @@ function initDockAccounts()
 
   _dockMyaccounts.visibilityChanged.connect(fillListMyAccts);
 
-  // Handle privilge control
+  // Handle privilege control
   var act = _dockMyaccounts.toggleViewAction();
 
   // Don't show if no privs
@@ -58,74 +56,52 @@ function initDockAccounts()
   _menuDesktop.appendAction(act);
 
   fillListMyAccts();
-}
 
-/*!
-  Fills the My Accounts list with CRM Accounts owned by the current user.
-*/
-function fillListMyAccts()
-{
-  _dockMyaccounts = mainwindow.findChild("_dockMyaccounts");
-  _accountList = mainwindow.findChild("_accountList");
+  function fillListMyAccts()
+  {
+    if (! _dockMyaccounts || ! _accountList || !_dockMyaccounts.visible || !_accountListIsDirty)
+      return;
 
-  if (!_dockMyaccounts.visible || !_accountListIsDirty)
-    return;
+    _accountList.populate(toolbox.executeDbQuery("desktop", "crmaccounts",
+                                                 { owner_username: mainwindow.username()} ));
 
-  params = new Object;
-  params.owner_username = mainwindow.username();
-  _accountList.populate(toolbox.executeDbQuery("desktop", "crmaccounts", params));
+    _accountListIsDirty = false;
+  }
 
-  _accountListIsDirty = false;
-}
+  function openWindowMyAccts()
+  {
+    if (!privilegeCheckMyAccts())
+      return;
 
-/*! 
-  Opens the window associated with the selected item.
-*/
-function openWindowMyAccts()
-{
-  // Make sure we can open the window
-  if (!privilegeCheckMyAccts())
-    return;
+    params = { crmacct_id: _accountList.id() };
+    if (privileges.check("MaintainAllCRMAccounts") || privileges.check("MaintainPersonalCRMAccounts"))
+      params.mode = "edit"
+    else
+      params.mode = "view"
 
-  // Determine which contact to open
-  params = new Object;
-  params.crmacct_id = _accountList.id();
-  if (privileges.check("MaintainAllCRMAccounts") || privileges.check("MaintainPersonalCRMAccounts"))
-    params.mode = "edit"
-  else
-    params.mode = "view"
+    // Open the window and perform any special handling required
+    var win = toolbox.openWindow("crmaccount");
+    win.set(params);
+  }
 
-  // Open the window and perform any special handling required
-  var win = toolbox.openWindow("crmaccount");
-  win.set(params);
-}
+  function populateMenuMyAccts(pMenu)
+  {
+    var menuItem;
 
-/*!
-  Adds actions to \a pMenu, typically from a right click on My Contacts.
-*/
-function populateMenuMyAccts(pMenu)
-{
-  var menuItem;
+    menuItem = pMenu.addAction(_open);
+    menuItem.enabled = privilegeCheckMyAccts();
+    menuItem.triggered.connect(openWindowMyAccts);
+  }
 
-  menuItem = pMenu.addAction(_open);
-  menuItem.enabled = privilegeCheckMyAccts();
-  menuItem.triggered.connect(openWindowMyAccts);
-}
+  function privilegeCheckMyAccts()
+  {
+    return privileges.check("MaintainAllCRMAccounts") || privileges.check("MaintainPersonalAccounts") ||
+           privileges.check("ViewAllCRMAccounts") || privileges.check("ViewPersonalCRMAccounts");
+  }
 
-/*!
-  Returns whether user has privileges to view My Contact detail.
-*/
-function privilegeCheckMyAccts()
-{
-  return privileges.check("MaintainAllCRMAccounts") || privileges.check("MaintainPersonalAccounts") ||
-         privileges.check("ViewAllCRMAccounts") || privileges.check("ViewPersonalCRMAccounts");
-}
-
-/*!
-  Refreshes data if the window is visible, or the next time it becomes visible
-*/
-function refreshMyAccts()
-{
-  _accountListIsDirty = true;
-  fillListMyAccts();
+  function refreshMyAccts()
+  {
+    _accountListIsDirty = true;
+    fillListMyAccts();
+  }
 }
