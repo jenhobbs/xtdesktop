@@ -39,6 +39,10 @@ function setupDesktopMenu() {
     _employee.wordWrap = true;
   }
 
+_employeeImage.setStyleSheet(imageStyle);
+_employee.setStyleSheet(imageStyle);
+
+
   _mainMenu["itemClicked(XTreeWidgetItem*, int)"].connect(mainMenuClicked);
   _shortcutMenu["itemClicked(XTreeWidgetItem*, int)"].connect(shortcutMenuClicked);
   mainwindow["emitSignal(QString, QString)"].connect(refreshShortcuts);
