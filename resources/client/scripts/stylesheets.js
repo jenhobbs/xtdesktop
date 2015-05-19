@@ -1,3 +1,13 @@
+/*
+ * This file is part of the xTuple ERP: PostBooks Edition, a free and
+ * open source Enterprise Resource Planning software suite,
+ * Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
+ * It is licensed to you under the Common Public Attribution License
+ * version 1.0, the full text of which (including xTuple-specific Exhibits)
+ * is available at www.xtuple.com/CPAL.  By using this software, you agree
+ * to be bound by its terms.
+ */
+
 var selectedFg = "#0177FF",
     selectedBg = "#FFF",
     bigBoxBorderColor = "#AAA",
@@ -129,13 +139,6 @@ var generalStyle = [ "* {",
 "QTabBar::tab:!selected {",
 "background-color: " + selectedBg + ";",
 "color: #666;",
-//"border-bottom-color: " + bigBoxBorderColor + ";",
-//"border-top-color: " + selectedBg + ";",
-// "border-left-color:" + selectedBg + ";",
-//"border-right-color: " + selectedBg + ";",
-//"border-radius: 0px;",
-// "border-left: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #FFFFFF, stop: 0.8 #FFFFFF, stop: 0.9 #e8e8e8, stop: 1 #e8e8e8);",
-//"border-right: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #FFFFFF, stop: 0.8 #FFFFFF, stop: 0.9 #e8e8e8, stop: 1 #e8e8e8);",
 "}",
  "QTabBar::tab:disabled {",
 "background-color: " + selectedBg + ";",
@@ -209,14 +212,14 @@ var generalStyle = [ "* {",
   "border: 2px solid " + selectedBg + ";",
  "border-radius: 7px;",
 "}",
-
-
+"QTextEdit {",
+  "font-family: monospace, courier;",
+"}"
 ].join(" ");
 
 var desktopMenuStyle = [ "* {",
-    "selection-color: " + selectedFg + ";",
+   "selection-color: " + selectedFg + ";",
    "selection-background-color: " + selectedBg + ";",
-//  "XTreeWidget::branch { border-image-source: none;};",
    "border-style: none;",
 "}",
 

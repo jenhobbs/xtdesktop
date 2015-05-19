@@ -1,8 +1,10 @@
 VER = 4.0.0
-EXCLUDE = --exclude Makefile --exclude .\*
-TAROPTS = -h
+TAROPTS = -h --exclude Makefile --exclude .\*
 
-all: FORCE
-	cd .. && tar czf packages/xtdesktop-$(VER).gz $(TAROPTS) $(EXCLUDE) resources
+all: ../packages/xtdesktop-$(VER).gz
+
+../packages/xtdesktop-$(VER).gz: FORCE
+	[ `uname -s` = Linux ]
+	cd .. && tar czf packages/xtdesktop-$(VER).gz $(TAROPTS) resources
 
 FORCE:
