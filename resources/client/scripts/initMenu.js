@@ -8,10 +8,9 @@
  * to be bound by its terms.
  */
 
-debugger;
 
 // Import code from related scripts
-include ("stylesheets");
+include("stylesheets");
 include("dockBankBal");
 include("dockExtensions");
 include("dockGLAccounts");
@@ -68,6 +67,7 @@ _dtTimer.start();
 
 // Setup the desktop layout
 _desktopWidget = toolbox.createWidget("QWidget", mainwindow, "_desktopWidget");
+_desktopWidget.setStyleSheet(desktopStyle);
 _desktopLayout = toolbox.createLayout("QHBoxLayout", mainwindow, "_desktopLayout");
 _desktopMenu = toolbox.loadUi("desktopMenuBar", mainwindow);
 _desktopMenu.maximumWidth = 200;

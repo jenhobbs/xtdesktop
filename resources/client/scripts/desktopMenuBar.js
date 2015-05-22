@@ -17,8 +17,8 @@ function setupDesktopMenu() {
 
   _mainMenu.addColumn(qsTr("MAIN MENU"), -1, Qt.AlignLeft, true, "menuItem");
 
-  _mainMenu.setStyleSheet(desktopMenuStyle);
-  _shortcutMenu.setStyleSheet(desktopMenuStyle);
+  _mainMenu.setStyleSheet(desktopStyle);
+  _shortcutMenu.setStyleSheet(desktopStyle);
   _mainMenu.alternatingRowColors = false;
   _shortcutMenu.alternatingRowColors = false;
   _shortcutMenu.maximumHeight = 150;
