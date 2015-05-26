@@ -29,8 +29,12 @@ desktop client:
 
 Features:
 
-* Redesign Desktop home page and add Shortcuts and Dashboard elements
 * Apply a new visual style to the desktop and application
+  (xt-desktop revamp) [25211]
+* Configurable Shortcuts page [25085]
 
 Bug Fixes:
 * Copyright date updated
+* Desktop Widget, Sales Order "Amount" field incorrect [24836]
+* Bank Account window do not include project accounting data [24843]
+* Disconnects caused by social desktop [25525]
