@@ -7,13 +7,34 @@
  * is available at www.xtuple.com/CPAL.  By using this software, you agree
  * to be bound by its terms.
  */
-var _interfaceWorkspace = mywindow.findChild("_interfaceWorkspace");
 
-_interfaceWorkspace.toggled.connect(desktopNotice);
+(function () {
+  var _buttonBox      = mywindow.findChild("_buttonBox"),
+      _interfaceWorkspace = mywindow.findChild("_interfaceWorkspace"),
+      _layout         = toolbox.widgetGetLayout(_interfaceWorkspace),
+      _useNativeStyle = toolbox.createWidget("QCheckBox", mywindow, "_useNativeStyle"),
+      _prefs          = preferences
+  ;
 
-function desktopNotice()
-{
-  if (_interfaceWorkspace.checked &&
-      !preferences.boolean("NoDesktopNotice"))
-    toolbox.openWindow("desktopNotice", mywindow, Qt.WindowModal, Qt.Dialog);
-}
+  _buttonBox.accepted.connect(save);
+  _interfaceWorkspace.toggled.connect(desktopNotice);
+  if (_prefs.value("xtdesktop/useNativeStyle").length) {
+    _useNativeStyle.checked = _prefs.boolean("xtdesktop/useNativeStyle");
+  }
+  
+  _layout.addWidget(_useNativeStyle, 2, 1);
+  _useNativeStyle.text = qsTr("Use Native Application Styling");
+
+  function desktopNotice()
+  {
+    if (_interfaceWorkspace.checked &&
+        !preferences.boolean("NoDesktopNotice"))
+      toolbox.openWindow("desktopNotice", mywindow, Qt.WindowModal, Qt.Dialog);
+  }
+
+  function save()
+  {
+    _prefs.set("xtdesktop/useNativeStyle", _useNativeStyle.checked);
+  }
+
+})();

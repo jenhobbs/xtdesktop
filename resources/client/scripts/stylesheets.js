@@ -226,8 +226,9 @@ var desktopMenuStyle = [ "* {",
 ].join(" ");
 
 try {
-var app = QApplication;
-app.setStyleSheet(generalStyle);
+  if (! preferences.boolean("xtdesktop/useNativeStyle")) {
+    QApplication.setStyleSheet(generalStyle);
+  }
 } catch(e) {
-  QMessageBox.critical(mainwindow, "QApplication Error", e);
+  QMessageBox.critical(mainwindow, "QApplication Error", e.message);
 }
