@@ -67,7 +67,7 @@ _dtTimer.start();
 
 // Setup the desktop layout
 _desktopWidget = toolbox.createWidget("QWidget", mainwindow, "_desktopWidget");
-_desktopWidget.setStyleSheet(desktopStyle);
+_desktopWidget.setStyleSheet(desktopMenuStyle);
 _desktopLayout = toolbox.createLayout("QHBoxLayout", mainwindow, "_desktopLayout");
 _desktopMenu = toolbox.loadUi("desktopMenuBar", mainwindow);
 _desktopMenu.maximumWidth = 200;

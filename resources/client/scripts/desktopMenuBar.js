@@ -17,8 +17,8 @@ function setupDesktopMenu() {
 
   _mainMenu.addColumn(qsTr("MAIN MENU"), -1, Qt.AlignLeft, true, "menuItem");
 
-  _mainMenu.setStyleSheet(desktopStyle);
-  _shortcutMenu.setStyleSheet(desktopStyle);
+  _mainMenu.setStyleSheet(desktopMenuStyle);
+  _shortcutMenu.setStyleSheet(desktopMenuStyle);
   _mainMenu.alternatingRowColors = false;
   _shortcutMenu.alternatingRowColors = false;
   _shortcutMenu.maximumHeight = 150;
@@ -61,10 +61,7 @@ function shortcutsMenuPopulateList() {
   _shortcutMenu.clear();
   var _sc = toolbox.executeDbQuery("desktop", "userShortcuts", new Object);
 
-// Populate shortcuts menu per Treeview item so it matches Main Menu visually
-  _shortcutMenu.populate(_sc); {
-    var menuItem = new XTreeWidgetItem(_shortcutMenu, _sc.value("usrpref_id"), _sc.value("usrpref_id"), _sc.value("menuShortcuts"));
-  }
+  _shortcutMenu.populate(_sc);
 }
 
 function shortcutsPopulateMenu(pMenu, pItem, pCol){

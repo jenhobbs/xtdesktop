@@ -263,11 +263,12 @@ var generalStyle = [ "* {",
   "border-right: none;",
   "border-bottom: 1px solid " + selectedFg + ";",
 "}",
+"QTextEdit {",
+  "font-family: monospace, courier;",
+"}"
 ].join(" ");
 
-var desktopStyle = generalStyle + 
-[
-  "* {",
+var desktopMenuStyle = [ "* {",
    "selection-color: " + selectedFg + ";",
    "selection-background-color: " + selectedBg + ";",
    "border-style: none;",
@@ -283,8 +284,9 @@ var desktopStyle = generalStyle +
 ].join(" ");
 
 try {
-var app = QApplication;
-app.setStyleSheet(generalStyle);
+  if (! preferences.boolean("xtdesktop/useNativeStyle")) {
+    QApplication.setStyleSheet(generalStyle);
+  }
 } catch(e) {
-  QMessageBox.critical(mainwindow, "QApplication Error", e);
+  QMessageBox.critical(mainwindow, "QApplication Error", e.message);
 }
