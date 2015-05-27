@@ -268,7 +268,8 @@ var generalStyle = [ "* {",
 "}"
 ].join(" ");
 
-var desktopMenuStyle = [ "* {",
+var desktopStyle = generalStyle +
+[ "* {",
    "selection-color: " + selectedFg + ";",
    "selection-background-color: " + selectedBg + ";",
    "border-style: none;",
