@@ -1,7 +1,7 @@
 -- Group:desktop
 -- Name:cmmntPrefSrc
 -- Notes: 
--- Copyright (c) 1999-2014 by OpenMFG LLC, d/b/a xTuple.
+-- Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 
 SELECT A.id AS id, A.cmntsource_name AS cmntsource_name, A.cmntsource_fullname AS cmntsource_fullname

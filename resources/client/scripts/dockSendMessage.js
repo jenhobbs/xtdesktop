@@ -116,7 +116,7 @@ function sHandleButtons()
   {
     if (QMessageBox.information(mainwindow, qsTr("Send Message?"),
                             qsTr("You are trying to Send Message to Yourself."
-                              +"\nAre you sure that you really want to Continue?."),
+                              +" Are you sure that you really want to Continue?."),
            QMessageBox.Yes | QMessageBox.Default, QMessageBox.No | QMessageBox.Escape) == QMessageBox.No)
     {
       _usr.clear();

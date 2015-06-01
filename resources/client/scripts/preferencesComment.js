@@ -188,6 +188,13 @@ function save()
     mywindow.reject();
   }
 
+  if (endDateoffSet - strtDateoffSet > 7)
+  {
+    strtDateoffSet = endDateoffSet - 7;
+    QMessageBox.critical(mywindow, qsTr("Comment Date Limit"),
+                         qsTr("Comment Start Date changed to honor 7 day limit"));
+  }
+
   preferences.set("MonitoredCommentStrtDate", strtDateoffSet);
   preferences.set("MonitoredCommentEndDate", endDateoffSet);
 }

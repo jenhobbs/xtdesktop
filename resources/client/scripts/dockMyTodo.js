@@ -1,7 +1,7 @@
 /*
  * This file is part of the xTuple ERP: PostBooks Edition, a free and
  * open source Enterprise Resource Planning software suite,
- * Copyright (c) 1999-2014 by OpenMFG LLC, d/b/a xTuple.
+ * Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
  * It is licensed to you under the Common Public Attribution License
  * version 1.0, the full text of which (including xTuple-specific Exhibits)
  * is available at www.xtuple.com/CPAL.  By using this software, you agree
@@ -21,7 +21,6 @@ function initDockTodo()
 
   if (_todoList)
   {
-    // Set columns on list
     _todoList.addColumn(qsTr("Type"), XTreeWidget.userColumn, Qt.AlignCenter, true, "type");
     _todoList.addColumn(qsTr("Priority"), XTreeWidget.userColumn, Qt.AlignLeft, false, "priority");
     _todoList.addColumn(qsTr("Assigned To"), XTreeWidget.userColumn, Qt.AlignLeft, false, "usr");
@@ -37,189 +36,163 @@ function initDockTodo()
     _todoList.addColumn(qsTr("Owner"), XTreeWidget.userColumn, Qt.AlignLeft, false,"owner");
 
     _todoList.itemSelected.connect(openWindowToDo);
-    _todoList["populateMenu(QMenu*,XTreeWidgetItem*,int)"]
-      .connect(populateMenuToDo);
+    _todoList["populateMenu(QMenu*,XTreeWidgetItem*,int)"].connect(populateMenuToDo);
+
+    if (_dockMytodo)
+    {
+      _dtTimer.timeout.connect(fillListToDo);
+      _dockMytodo.visibilityChanged.connect(fillListToDo);
+
+      // Handle privilege control
+      var act = _dockMytodo.toggleViewAction();
+
+      if (!privileges.check("ViewTodoDock"))
+      {
+        _dockMytodo.hide();
+        act.enabled = false;
+      }
+
+      // Allow rescan to let them show if privs granted
+      act.setData("ViewTodoDock");
+      _menuDesktop.appendAction(act);
+    }
+
+    fillListToDo();
   }
 
-
-  // Connect signals and slots
-  _dtTimer.timeout.connect(fillListSalesAct);
-
-  if (_dockMytodo)
+  function deleteToDo()
   {
-    _dockMytodo.visibilityChanged.connect(fillListToDo);
+    var answer = QMessageBox.question(mainwindow,
+                       qsTr("Delete To Do?"),
+                       qsTr("This will permenantly delete the To Do item.  Are you sure?"),
+                       QMessageBox.Yes | QMessageBox.No,
+                       QMessageBox.Yes);
+    if(answer == QMessageBox.No)
+      return;
 
-    // Handle privilge control
-    var act = _dockMytodo.toggleViewAction();
+    toolbox.executeDbQuery("desktop","todoDelete", { todoitem_id: _todoList.id() } );
+    fillListToDo();
+  }
 
-    // Don't show if no privs
-    if (!privileges.check("ViewTodoDock"))
+  function openWindowToDo()
+  {
+    params = new Object;
+    actId = _todoList.altId();
+    act = toDoAct(actId);
+
+    // Make sure we can open the window
+    if (!privilegeCheckToDo(act))
+      return;
+
+    // Determine which window to open
+    if (act == "D") // To Do
     {
-      _dockMytodo.hide();
-      act.enabled = false;
+      ui = "todoItem";
+      if (privileges.check("MaintainAllToDoItems") || privileges.check("MaintainPersonalToDoItems"))
+        params.mode = "edit";
+      else
+        params.mode = "view";
+      params.todoitem_id = _todoList.id();
+    }
+    else if (act == "I")
+    {
+      ui = "incident";
+      if (privileges.check("MaintainAllIncidents") || privileges.check("MaintainPersonalIncidents"))
+        params.mode = "edit";
+      else
+        params.mode = "view";
+      params.incdt_id = _todoList.id();
+    }
+    else if (act == "T")
+    {
+      ui = "task";
+      if (privileges.check("MaintainAllProjects") || privileges.check("MaintainPersonalProjects"))
+        params.mode = "edit";
+      else
+        params.mode = "view"
+      params.prjtask_id = _todoList.id();
+    }
+    else if (act == "P")
+    {
+      ui = "project";
+      if (privileges.check("MaintainAllProjects") || privileges.check("MaintainPersonalProjects"))
+        params.mode = "edit";
+      else
+        params.mode = "view";
+      params.prj_id = _todoList.id();
+    }
+
+    // Open the window and perform any special handling required
+    var newdlg = toolbox.openWindow(ui);
+    newdlg.set(params);
+    newdlg.exec()
+  }
+
+  function toDoAct(actId)
+  {
+    if (actId == 1)
+      return "D";
+    else if (actId == 2)
+      return "I";
+    else if (actId == 3)
+      return "T";
+    else if (actId == 4)
+      return "P"
+
+    return "";
+  }
+
+  function populateMenuToDo(pMenu)
+  {
+    var act = toDoAct(_todoList.altId());
+    var menuItem;
+
+    menuItem = pMenu.addAction(_open);
+    menuItem.enabled = privilegeCheckToDo(act);
+    
+    menuItem.triggered.connect(openWindowToDo);
+
+    if (act == "D")
+    {
+      menuItem = pMenu.addAction(qsTr("Delete"));
+      menuItem.enabled = privileges.check("MaintainAllToDoItems") || 
+                         privileges.check("MaintainPersonalToDoItems");
+      menuItem.triggered.connect(deleteToDo);
     }
   }
 
-  // Allow rescan to let them show if privs granted
-  act.setData("ViewTodoDock");
-  _menuDesktop.appendAction(act);
-
-  fillListToDo();
-}
-
-/*!
-  Deletes the selected To Do item.
-*/
-function deleteToDo()
-{
-  var answer = QMessageBox.question(mainwindow,
-                     qsTr("Delete To Do?"),
-                     qsTr("This will permenantly delete the To Do item.  Are you sure?"),
-                     QMessageBox.Yes | QMessageBox.No,
-                     QMessageBox.Yes);
-  if(answer == QMessageBox.No)
-    return;
-
-  params = new Object;
-  params.todoitem_id = _todoList.id();
-
-  toolbox.executeDbQuery("desktop","todoDelete", params);
-  fillListToDo();
-}
-
-/*!
-  Fills the To Do list with CRM activities owned by or assigned to the current user.
-*/
-function fillListToDo()
-{
-  _dockMytodo = mainwindow.findChild("_dockMytodo");
-  _todoList = mainwindow.findChild("_todoList");
-
-  if (!_dockMytodo || !_dockMytodo.visible || !_todoList)
-    return;
-
-  params = new Object;
-  params.todo = qsTr("To-do");
-  params.incident = qsTr("Incident");
-  params.task = qsTr("Task");
-  params.project = qsTr("Project");
-  params.todoList = true;
-  params.incidents = true;
-  params.projects = true;
-  params.assigned_username = mainwindow.username();
-  params.owner_username = mainwindow.username();
-  _todoList = mainwindow.findChild("_todoList");
-  _todoList.populate(toolbox.executeDbQuery("desktop", "todoList", params), true);
-}
-
-/*! 
-  Opens the window associated with the selected item.
-*/
-function openWindowToDo()
-{
-  params = new Object;
-  actId = _todoList.altId();
-  act = toDoAct(actId);
-
-  // Make sure we can open the window
-  if (!privilegeCheckToDo(act))
-    return;
-
-  // Determine which window to open
-  if (act == "D") // To Do
+  function privilegeCheckToDo(act)
   {
-    ui = "todoItem";
-    if (privileges.check("MaintainAllToDoItems") || privileges.check("MaintainPersonalToDoItems"))
-      params.mode = "edit";
-    else
-      params.mode = "view";
-    params.todoitem_id = _todoList.id();
-  }
-  else if (act == "I")
-  {
-    ui = "incident";
-    if (privileges.check("MaintainAllIncidents") || privileges.check("MaintainPersonalIncidents"))
-      params.mode = "edit";
-    else
-      params.mode = "view";
-    params.incdt_id = _todoList.id();
-  }
-  else if (act == "T")
-  {
-    ui = "task";
-    if (privileges.check("MaintainAllProjects") || privileges.check("MaintainPersonalProjects"))
-      params.mode = "edit";
-    else
-      params.mode = "view"
-    params.prjtask_id = _todoList.id();
-  }
-  else if (act == "P")
-  {
-    ui = "project";
-    if (privileges.check("MaintainAllProjects") || privileges.check("MaintainPersonalProjects"))
-      params.mode = "edit";
-    else
-      params.mode = "view";
-    params.prj_id = _todoList.id();
+    if (act == "D") // To Do list
+      return privileges.check("MaintainAllToDoItems") || privileges.check("MaintainPersonalToDoItems") ||
+             privileges.check("ViewAllToDoItems") || privileges.check("ViewPersonalToDoItems");
+    else if (act == "I") // Incidents
+      return privileges.check("MaintainAllIncidents") || privileges.check("MaintainPersonalIncidents") ||
+             privileges.check("ViewAllIncidents") || privileges.check("ViewPersonalIncidents");
+    else if (act == "P" || act == "T") // Projects and Tasks
+      return privileges.check("MaintainAllProjects") || privileges.check("MaintainPersonalProjects") ||
+             privileges.check("ViewAllProjects") || privileges.check("ViewPersonalProjects");
+
+    return false;
   }
 
-  // Open the window and perform any special handling required
-  var newdlg = toolbox.openWindow(ui);
-  newdlg.set(params);
-  newdlg.exec()
 }
 
-function toDoAct(actId)
-{
-  if (actId == 1)
-    return "D";
-  else if (actId == 2)
-    return "I";
-  else if (actId == 3)
-    return "T";
-  else if (actId == 4)
-    return "P"
-
-  return "";
-}
-
-/*!
-  Adds actions to \a pMenu, typically from a right click on My Contacts.
-*/
-function populateMenuToDo(pMenu)
-{
-  var act = toDoAct(_todoList.altId());
-  var menuItem;
-
-  menuItem = pMenu.addAction(_open);
-  menuItem.enabled = privilegeCheckToDo(act);
-  
-  menuItem.triggered.connect(openWindowToDo);
-
-  if (act == "D")
+  function fillListToDo()
   {
-    menuItem = pMenu.addAction(qsTr("Delete"));
-    menuItem.enabled = privileges.check("MaintainAllToDoItems") || 
-                       privileges.check("MaintainPersonalToDoItems");
-    menuItem.triggered.connect(deleteToDo);
+    if (!_dockMytodo || !_dockMytodo.visible || !_todoList)
+      return;
+
+    var params = {
+      todo:              qsTr("To-do"),
+      incident:          qsTr("Incident"),
+      task:              qsTr("Task"),
+      project:           qsTr("Project"),
+      todoList:          true,
+      incidents:         true,
+      projects:          true,
+      assigned_username: mainwindow.username(),
+      owner_username:    mainwindow.username(),
+    };
+    _todoList.populate(toolbox.executeDbQuery("desktop", "todoList", params), true);
   }
-}
-
-/*!
-  Returns whether user has privileges to view My Contact detail.
-*/
-function privilegeCheckToDo(act)
-{
-  if (act == "D") // To Do list
-    return privileges.check("MaintainAllToDoItems") || privileges.check("MaintainPersonalToDoItems") ||
-           privileges.check("ViewAllToDoItems") || privileges.check("ViewPersonalToDoItems");
-  else if (act == "I") // Incidents
-    return privileges.check("MaintainAllIncidents") || privileges.check("MaintainPersonalIncidents") ||
-           privileges.check("ViewAllIncidents") || privileges.check("ViewPersonalIncidents");
-  else if (act == "P" || act == "T") // Projects and Tasks
-    return privileges.check("MaintainAllProjects") || privileges.check("MaintainPersonalProjects") ||
-           privileges.check("ViewAllProjects") || privileges.check("ViewPersonalProjects");
-
-  return false;
-}
-
