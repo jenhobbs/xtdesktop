@@ -16,6 +16,13 @@
     </message>
 </context>
 <context>
+    <name>desktop</name>
+    <message>
+        <source>Desktop</source>
+        <translation type="unfinished">桌面</translation>
+    </message>
+</context>
+<context>
     <name>desktopAccounting</name>
     <message>
         <source>Aging</source>
@@ -637,6 +644,45 @@
     </message>
 </context>
 <context>
+    <name>desktopSocial</name>
+    <message>
+        <source>Social</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comment Console</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>b</source>
+        <translation type="unfinished">b</translation>
+    </message>
+    <message>
+        <source>Send Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Users Online</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>dockBankBal</name>
     <message>
         <source>Reconcile...</source>
@@ -771,6 +817,25 @@
     <message>
         <source>Equity</source>
         <translation>業主權益</translation>
+    </message>
+</context>
+<context>
+    <name>dockMessageHistory</name>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished">重載</translation>
+    </message>
+    <message>
+        <source>Preferences...</source>
+        <translation type="unfinished">偏好 ...</translation>
+    </message>
+    <message>
+        <source>Open...</source>
+        <translation type="unfinished">開啟 ...</translation>
+    </message>
+    <message>
+        <source>Database Error</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1512,6 +1577,301 @@
     </message>
 </context>
 <context>
+    <name>dockSendMessage</name>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished">重載</translation>
+    </message>
+    <message>
+        <source>Preferences...</source>
+        <translation type="unfinished">偏好 ...</translation>
+    </message>
+    <message>
+        <source>Send Message?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are trying to Send Message to Yourself. Are you sure that you really want to Continue?.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Address...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Address...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Breeder Bill of Material...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Breeder Bill of Material...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Breeder Bill of Material Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Breeder Bill of Material Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Bill of Material...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Bill of Material...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit BOM Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View BOM Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit BOO Head...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View BOO Head...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit BOO Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View BOO Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit CRM Account...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View CRM Account...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Contact...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Contact...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Customer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Customer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Employee...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Employee...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Incident...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Incident...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit ItemSite...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View ItemSite...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit ItemSource...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View ItemSource...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Location...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Location...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit LotSerial...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View LotSerial...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Opportunity...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Opportunity...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Project...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Project...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Purchase Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Purchase Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Purchase Order Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Purchase Order Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Return Authorisation...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Return Authorisation...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Return Authorisation Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Return Authorisation Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Quote...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Quote...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Quote Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Quote Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Sales Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Sales Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Sales Order Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Sales Order Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Task...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Task...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit TodoItem...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View TodoItem...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Transfer Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Transfer Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Transfer Order Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Transfer Order Item...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Vendor...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Vendor...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit WareHouse...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View WareHouse...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Work Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View Work Order...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>dockUserOnline</name>
     <message>
         <source># External</source>
@@ -1567,6 +1927,29 @@
     <message>
         <source>Welcome</source>
         <translation>歡迎</translation>
+    </message>
+    <message>
+        <source>Dashboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>preferencesComment</name>
+    <message>
+        <source>Database Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comment Date Limit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comment Start Date changed to honor 7 day limit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comment Preference</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1665,6 +2048,17 @@
     </message>
 </context>
 <context>
+    <name>preferencesNumber</name>
+    <message>
+        <source>Number Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messages to display:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>preferencesSelections</name>
     <message>
         <source>Asset</source>
@@ -1705,6 +2099,52 @@
     <message>
         <source>Account#</source>
         <translation>科目 #</translation>
+    </message>
+</context>
+<context>
+    <name>sendMessageToUser</name>
+    <message>
+        <source>Send Message?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are trying to Send Reply Message to Yourself.
+Are you sure that you really want to Continue?.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Message to User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>systemMessage</name>
+    <message>
+        <source>Reply</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>userPreferences</name>
+    <message>
+        <source>Use Native Application Styling</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
