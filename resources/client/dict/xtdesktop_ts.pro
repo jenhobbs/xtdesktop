@@ -17,7 +17,7 @@ FORMS += ../uiforms/desktopAccounting.ui \
          ../uiforms/desktopSales.ui \
          ../uiforms/preferencesHistory.ui \
          ../uiforms/preferencesSelections.ui
-TRANSLATIONS += xtdesktop.base.ts
+
 SOURCES += \
 ../scripts/contact.js \
 ../scripts/desktopNotice.js \
@@ -48,4 +48,32 @@ SOURCES += \
 ../scripts/todoItem.js \
 ../scripts/userPreferences.js \
 
-TRANSLATIONS += xtdesktop.base.ts
+TRANSLATIONS += xtdesktop.base.ts   \
+                xtdesktop.ar_eg.ts  \
+                xtdesktop.bg.ts     \
+                xtdesktop.cn.ts     \
+                xtdesktop.cs.ts     \
+                xtdesktop.de.ts     \
+                xtdesktop.de_at.ts  \
+                xtdesktop.de_ch.ts  \
+                xtdesktop.en_ca.ts  \
+                xtdesktop.es.ts     \
+                xtdesktop.es_ar.ts  \
+                xtdesktop.es_mx.ts  \
+                xtdesktop.et_ee.ts  \
+                xtdesktop.fr.ts     \
+                xtdesktop.fr_ca.ts  \
+                xtdesktop.hr.ts     \
+                xtdesktop.it.ts     \
+                xtdesktop.jp.ts     \
+                xtdesktop.nl.ts     \
+                xtdesktop.no.ts     \
+                xtdesktop.pl.ts     \
+                xtdesktop.pt.ts     \
+                xtdesktop.pt_br.ts  \
+                xtdesktop.ru.ts     \
+                xtdesktop.sk.ts     \
+                xtdesktop.tr.ts     \
+                xtdesktop.ua.ts     \
+                xtdesktop.zh_hk.ts  \
+                xtdesktop.zh_tw.ts
