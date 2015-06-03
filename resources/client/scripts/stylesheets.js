@@ -15,10 +15,14 @@ var selectedFg          = "#0177FF",
     smallBoxBg          = "#E8E8E8",
     generalFontSize     = "10pt",
     borderRadius        = "4px",
+    groupBoxPadding     = "1ex",
     ;
 
-if (mainwindow.getWindowSystem() == mainwindow.MAC) {
-  generalFontSize = "12pt";
+switch (mainwindow.getWindowSystem()) {
+  case mainwindow.MAC: generalFontSize = "12pt";
+                       break;
+  case mainwindow.WIN: groupBoxPadding = "3ex;";
+                       break;
 }
 
 var imageStyle = [ "* {",
@@ -34,8 +38,7 @@ var generalStyle = [ "* {",
     "color: rgb(68, 68, 68);",
     "background-color: " + selectedBg + ";",
     "selection-color: " + selectedFg + ";",
-    "selection-background-color: " + selectedBg + ";", 
-    "selection-border-color: transparent;",
+    "selection-background-color: " + selectedBg + ";",
 "}",
 "*:disabled {",
   "color: " + bigBoxBorderColor + ";",
@@ -122,7 +125,7 @@ var generalStyle = [ "* {",
  "border-left: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #e8e8e8, stop: 0.05 #e8e8e8, stop: 0.06 #FFFFFF, stop: 1 #FFFFFF);",
 "border-right: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #e8e8e8, stop: 0.05 #e8e8e8, stop: 0.06 #FFFFFF, stop: 1 #FFFFFF);",
  "margin-top: 1ex;",
-"padding-top: 1ex;",
+ "padding: " + groupBoxPadding + ";",
 "}",
 "QGroupBox::title {",
  "color: rgb(138, 138, 138);",
@@ -258,6 +261,7 @@ var generalStyle = [ "* {",
   "border: 1px solid " + bigBoxBorderColor + ";",
   "image: none;",
   "width: 2px;",
+  "height: 2px;",
 "}",
 "QToolButton {",
   "background-color: " + selectedBg + ";",
