@@ -35,6 +35,8 @@ This package is an extension for xTuple ERP: PostBooks Edition, a free and open 
     </message>
   </prerequisite>
 
+  <initscript file="database/misc/deleteInitMenu.sql"  />
+
  <loadpriv      name="AccessAdditionalUser" module="Desktop">
    Controls access to additional Users
  </loadpriv>
@@ -147,7 +149,7 @@ This package is an extension for xTuple ERP: PostBooks Edition, a free and open 
   <loadappscript  file="client/scripts/dockUserOnline.js" name="dockUserOnline" order="0"/>
   <loadappscript  file="client/scripts/hotkey.js" name="hotkey" order="0"/>
   <loadappscript  file="client/scripts/incident.js" name="incident" order="0"/>
-  <loadappscript  file="client/scripts/initMenu.js" name="initMenu" order="0"/>
+  <loadappscript  file="client/scripts/initMenu.js" name="initMenu" order="10"/>
   <loadappscript  file="client/scripts/preferencesComment.js" name="preferencesComment" order="0"/>
   <loadappscript  file="client/scripts/preferencesHistory.js" name="preferencesHistory" order="0"/>
   <loadappscript  file="client/scripts/preferencesNumber.js" name="preferencesNumber" order="0"/>
