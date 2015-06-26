@@ -3,7 +3,11 @@
 -- Notes: Return list of User defined hotkey preferences for use in xtDesktop Shortcuts.  Shortcuts names derive programatically from the action
 SELECT usrpref_id, 
   TRIM(initcap(regexp_replace(split_part(regexp_replace(usrpref_value, E'dsp|_', E' '), '.', 2), E'([A-Z])', E'\ \\1','g'))) AS menuShortcuts,
-  usrpref_value AS menuAction
+  usrpref_value AS menuAction,
+  CASE WHEN LEFT(usrpref_name,1) = 'F' THEN 1
+            WHEN SUBSTRING(usrpref_name,2,1) ~ '[0-9]' THEN 3 
+            ELSE 2 END AS sort
 FROM usrpref
 WHERE usrpref_username = getEffectiveXtUser()
-AND usrpref_name IN ('F1', 'F2', 'F3', 'F4', 'F5')
+AND length(usrpref_name) = 2
+ORDER BY sort
