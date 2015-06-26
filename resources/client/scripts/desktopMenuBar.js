@@ -21,7 +21,7 @@ function setupDesktopMenu() {
   _shortcutMenu.setStyleSheet(desktopStyle);
   _mainMenu.alternatingRowColors = false;
   _shortcutMenu.alternatingRowColors = false;
-  _shortcutMenu.maximumHeight = 150;
+  _shortcutMenu.maximumHeight = 400;
   _shortcutMenu.addColumn(qsTr("SHORTCUTS"), -1, Qt.AlignLeft, true, "menuShortcuts");
 
   shortcutsMenuPopulateList();
