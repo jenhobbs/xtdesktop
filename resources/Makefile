@@ -1,8 +1,16 @@
-VER = 4.0.0
-EXCLUDE = --exclude Makefile --exclude .\*
-TAROPTS = -h
+# extract version number from the package.xml
+VER = $(shell awk '/version *=/ { split($$0, ary, "[\"= ]*");	\
+                                  for (i in ary) {		\
+				    if (ary[i] == "version") {	\
+				      print ary[i + 1] ; exit;	\
+				    } } }' package.xml)
 
-all: FORCE
-	cd .. && tar czf packages/xtdesktop-$(VER).gz $(TAROPTS) $(EXCLUDE) resources
+TAROPTS = -h --exclude Makefile --exclude .\*
+
+all: ../packages/xtdesktop-$(VER).gz
+
+../packages/xtdesktop-$(VER).gz: FORCE
+	[ `uname -s` = Linux ]
+	cd .. && tar czf packages/xtdesktop-$(VER).gz $(TAROPTS) resources
 
 FORCE:
