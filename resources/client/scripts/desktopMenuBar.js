@@ -12,7 +12,6 @@ function setupDesktopMenu() {
 
   _mainMenu = mainwindow.findChild("_mainMenu");
   _shortcutMenu = mainwindow.findChild("_shortcutMenu");
-  _employeeImage = mainwindow.findChild("_employeeImage");
   _employee = mainwindow.findChild("_employee");
 
   _mainMenu.addColumn(qsTr("MAIN MENU"), -1, Qt.AlignLeft, true, "menuItem");
@@ -26,20 +25,18 @@ function setupDesktopMenu() {
 
   shortcutsMenuPopulateList();
 
-  var _employeeSql = "SELECT 0 as sort, crmacct_name, crmacct_usr_username, emp.emp_image_id "
+  var _employeeSql = "SELECT 0 as sort, crmacct_name, crmacct_usr_username "
                 + "FROM emp JOIN crmacct ON (emp_id=crmacct_emp_id) "
                 + "WHERE crmacct_usr_username = geteffectivextuser() "
-                + "UNION SELECT 1 as sort, geteffectivextuser(), usr_propername, null "
+                + "UNION SELECT 1 as sort, geteffectivextuser(), usr_propername "
                 + "FROM usr WHERE usr_username = geteffectivextuser() "
                 + "ORDER BY 1 ASC LIMIT 1;       ";
   var _employeeData = toolbox.executeQuery(_employeeSql);
   if (_employeeData.first()){
-    _employeeImage.setId(_employeeData.value("emp_image_id"));
     _employee.text = _employeeData.value("crmacct_name");
     _employee.wordWrap = true;
   }
 
-_employeeImage.setStyleSheet(imageStyle);
 _employee.setStyleSheet(imageStyle);
 
 
