@@ -32,12 +32,6 @@ to be bound by its terms.</comment>
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">font: 75 10pt &quot;Verdana&quot;;
-color: rgb(138, 138, 138);
-selection-color: rgb(36, 146, 222);
-selection-background-color: rgb(255, 255, 255);</string>
-     </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
@@ -54,12 +48,6 @@ selection-background-color: rgb(255, 255, 255);</string>
        <height>16777215</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">font: 75 10pt &quot;Verdana&quot;;
-color: rgb(158, 158, 158);
-selection-color: rgb(36, 146, 222);
-selection-background-color: rgb(255, 255, 255);</string>
-     </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
@@ -70,40 +58,6 @@ selection-background-color: rgb(255, 255, 255);</string>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="ImageCluster" name="_employeeImage">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="label">
-        <string/>
-       </property>
-       <property name="nameVisible">
-        <bool>false</bool>
-       </property>
-       <property name="descriptionVisible">
-        <bool>false</bool>
-       </property>
-       <property name="numberVisible">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
      <item>
       <widget class="XLabel" name="_employee">
        <property name="maximumSize">
