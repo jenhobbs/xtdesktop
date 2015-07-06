@@ -4,13 +4,18 @@ VER = $(shell awk '/version *=/ { split($$0, ary, "[\"= ]*");	\
 				    if (ary[i] == "version") {	\
 				      print ary[i + 1] ; exit;	\
 				    } } }' package.xml)
+PKG = $(shell awk '/name *=/ { split($$0, ary, "[\"= ]*");	\
+                                  for (i in ary) {		\
+				    if (ary[i] == "name") {	\
+				      print ary[i + 1] ; exit;	\
+				    } } }' package.xml)
 
 TAROPTS = -h --exclude Makefile --exclude .\*
 
-all: ../packages/xtdesktop-$(VER).gz
+all: ../packages/$(PKG)-$(VER).gz
 
-../packages/xtdesktop-$(VER).gz: FORCE
+../packages/$(PKG)-$(VER).gz: FORCE
 	[ `uname -s` = Linux ]
-	cd .. && tar czf packages/xtdesktop-$(VER).gz $(TAROPTS) resources
+	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) resources
 
 FORCE:

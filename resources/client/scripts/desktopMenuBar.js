@@ -21,7 +21,7 @@ function setupDesktopMenu() {
   _mainMenu.alternatingRowColors = false;
   _shortcutMenu.alternatingRowColors = false;
   _shortcutMenu.maximumHeight = 400;
-  _shortcutMenu.addColumn(qsTr("SHORTCUTS"), -1, Qt.AlignLeft, true, "menuShortcuts");
+  _shortcutMenu.addColumn(qsTr("SHORTCUTS"), -1, Qt.AlignLeft, true, "menuAction");
 
   shortcutsMenuPopulateList();
 
@@ -55,10 +55,67 @@ function refreshShortcuts(source, type) {
 }
 
 function shortcutsMenuPopulateList() {
-  _shortcutMenu.clear();
-  var _sc = toolbox.executeDbQuery("desktop", "userShortcuts", new Object);
 
-  _shortcutMenu.populate(_sc);
+  var menu = [ "menu.prod",  "menu.im",    "menu.sched",
+               "menu.purch", "menu.manu",  "menu.crm",
+               "menu.sales", "menu.accnt", "menu.sys" ],
+     scMaxLength = 25,
+     sep = qsTr(" > "),
+     scq, column, idx, item, i, j, path, longText;
+
+  function getPath(objName, menu) {
+    var actions, item, i, submenu;
+    if (menu.objectName === objName) {
+      return [ menu ];
+    } else if (menu.menu || menu.actions) {
+      if (menu.menu) {
+        submenu = menu.menu();
+        actions = (submenu && submenu.actions) ? submenu.actions() : [];
+      } else
+        actions = menu.actions();
+      for (i = 0; i < actions.length; i++) {
+        item = getPath(objName, actions[i]);
+        if (item) {
+          item.unshift(menu);
+          return item;
+        }
+      }
+    }
+  }
+  
+  _shortcutMenu.clear();
+  scq = toolbox.executeDbQuery("desktop", "userShortcuts", new Object);
+
+  _shortcutMenu.populate(scq);
+  
+  column = _shortcutMenu.column('menuAction');
+  for (idx = _shortcutMenu.topLevelItemCount - 1; idx >= 0; idx--) {
+    item = _shortcutMenu.topLevelItem(idx);
+    for (i = 0; i < menu.length; i++) {
+      path = getPath(item.rawValue('menuAction'), mainwindow.findChild(menu[i]));
+      if (path && path.length) {
+        longText = path.map(function (elem) { return elem.text ? elem.text : "" })
+                       .filter(function (elem) { return elem; })
+                       .join(sep);
+        longText = longText.replace(/(\.\.\.|&)/g, "");
+        break;
+      }
+    }
+    if (longText) {
+      if (longText.length < scMaxLength)
+        item.setData(column, Qt.DisplayRole, longText);
+      else {
+        // shorten the shortcut to a '>' boundary if it looks too long
+        for (j = i = longText.indexOf(sep);
+             longText.length - j > scMaxLength && j > 0;
+             j = longText.indexOf(sep, j + 1)) {
+          i = j;
+        }
+        item.setData(column, Qt.DisplayRole, "..." + longText.substring(i));
+      }
+      item.setData(column, Qt.ToolTipRole, longText);
+    }
+  }
 }
 
 function shortcutsPopulateMenu(pMenu, pItem, pCol){
