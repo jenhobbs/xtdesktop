@@ -70,7 +70,7 @@ _desktopWidget = toolbox.createWidget("QWidget", mainwindow, "_desktopWidget");
 _desktopWidget.setStyleSheet(desktopStyle);
 _desktopLayout = toolbox.createLayout("QHBoxLayout", mainwindow, "_desktopLayout");
 _desktopMenu = toolbox.loadUi("desktopMenuBar", mainwindow);
-_desktopMenu.maximumWidth = 200;
+_desktopMenu.maximumWidth = 250;
 _desktopStack = toolbox.createWidget("QStackedWidget", mainwindow, "_desktopStack");
 _desktopLayout.addWidget(_desktopMenu);
 _desktopLayout.addWidget(_desktopStack);
