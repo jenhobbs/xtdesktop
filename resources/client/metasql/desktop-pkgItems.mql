@@ -107,7 +107,7 @@ SELECT pkghead_id AS pkgitem_id, 8 AS seq,
        '' AS pkgitem_descrip
   FROM pkghead
 UNION
-SELECT priv_id AS pkgitem_id, 9 AS seq,
+SELECT pkghead_id AS pkgitem_id, 9 AS seq,
        3 AS xtindentrole,
        nspname AS pkgname,
        'P' AS pkgitem_type,
@@ -116,6 +116,7 @@ SELECT priv_id AS pkgitem_id, 9 AS seq,
   FROM priv
     JOIN pg_class ON (priv.tableoid=pg_class.oid)
     JOIN pg_namespace ON (relnamespace=pg_namespace.oid)
+    JOIN pkghead ON (nspname=pkghead_name)
 UNION 
 ------ REPORTS ------
 SELECT pkghead_id AS pkgitem_id, 10 AS seq,
