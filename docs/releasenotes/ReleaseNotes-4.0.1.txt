@@ -1,0 +1,36 @@
+Release Notes
+xTuple Desktop (xtDesktop)
+Version 4.0.0
+January 2015
+==================================
+
+This is the release of the 4.0.1 xTuple Desktop package,
+a free and open source extension package for xTuple ERP (PostBooks, 
+Standard, and Manufacturing Editions). 
+
+xtDesktop is available under the same Common Public Attribution 
+License (CPAL) as the PostBooks Edition of xTuple ERP 
+(www.xtuple.com/CPAL). For more information on xTuple's extension 
+package architecture, please see www.xtuple.org/developer-zone.
+
+==================================
+
+Release 4.0.1 of the xTuple Desktop fixes a few minor issues with the
+new desktop client style. In particular:
+- The shortcut list on the left-hand side of the main window has been
+  extended to show all user-defined shortcuts.
+- The text for these shortcuts has been replaced with an abbreviated
+  form of the menu path for more consistent access.
+
+Features:
+* Extend xtdesktop shortcuts to allow all hotkeys [25426]
+
+Bug Fixes:
+* Shortcuts area of new desktop is not sizing properly on windows 10
+  (and possibly win8) [25938]
+* Cannot set interface option for another user [25948]
+* Remove Employee image from v4.0.0 desktop [26013]
+* Suggest Removal of orphaned "Work Order Schedule by Class Code" shortcut
+  from usrpref [26041, actually a data change to reference databases]
+* 'Open' option is in enabled mode under Maintenance 'Privileges' [26065]
+* Shortcut names should match menu text [26129]
