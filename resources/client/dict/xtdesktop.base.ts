@@ -2665,8 +2665,13 @@ Are you sure that you really want to Continue?.</source>
 <context>
     <name>userPreferences</name>
     <message>
-        <location filename="../scripts/userPreferences.js" line="26"/>
+        <location filename="../scripts/userPreferences.js" line="30"/>
         <source>Use Native Application Styling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/userPreferences.js" line="62"/>
+        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

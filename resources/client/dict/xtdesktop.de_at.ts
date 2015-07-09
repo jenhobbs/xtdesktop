@@ -2146,5 +2146,9 @@ Are you sure that you really want to Continue?.</source>
         <source>Use Native Application Styling</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
