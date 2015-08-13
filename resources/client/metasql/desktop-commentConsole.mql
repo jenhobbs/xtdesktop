@@ -71,7 +71,7 @@ SELECT
                WHERE ((comment_source_id = bomhead_item_id)
                   AND (bomhead_item_id = item_id)
                   AND (comment_source = 'BMH')
-                  AND (rev_status = 'A')))
+                  AND (rev_status = 'A' OR bomhead_rev_id < 0)))
 
 -- BOM Item 
         WHEN comment_source = 'BMI' THEN
