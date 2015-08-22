@@ -14,12 +14,14 @@ var selectedFg          = "#0177FF",
     smallBoxBorderColor = "#E8E8E8",
     smallBoxBg          = "#E8E8E8",
     generalFontSize     = "10pt",
+    reducedFontSize     = "9pt",
     borderRadius        = "4px",
     groupBoxPadding     = "1ex",
     ;
 
 switch (mainwindow.getWindowSystem()) {
   case mainwindow.MAC: generalFontSize = "12pt";
+                       reducedFontSize = "11pt";
                        break;
   case mainwindow.WIN: groupBoxPadding = "3ex;";
                        break;
@@ -178,8 +180,9 @@ var generalStyle = [ "* {",
 "QComboBox::editable:selected {",
   "border: 2px solid " + selectedFg + ";",
 "}",
-"QTreeWidget  {",
-  "selection-background-color: transparent;",
+"QHeaderView::section {",
+  "color: black;", // font-size doesn't work without this. why not?
+  "font-size: " + reducedFontSize + ";",
 "}",
 "QMenuBar::item:selected {",
   "background: " + selectedBg + ";",
@@ -286,7 +289,10 @@ var generalStyle = [ "* {",
   "border: 1px solid " + selectedFg + ";",
   "selection-color: " + selectedFg + ";",
   "background-color: " + selectedBg + ";",
-"color: " + selectedFg + ";",
+  "color: " + selectedFg + ";",
+"}",
+"QTreeWidget  {",
+  "selection-background-color: transparent;",
 "}"
 ].join(" ");
 
