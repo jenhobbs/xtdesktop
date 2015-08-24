@@ -22,8 +22,7 @@ var selectedFg          = "#0177FF",
     ;
 
 switch (mainwindow.getWindowSystem()) {
-  case mainwindow.MAC: largeFontSize = "13pt";
-                       generalFontSize = "12pt";
+  case mainwindow.MAC: generalFontSize       = "12pt";
                        groupBoxTitleFontSize = "10pt";
                        break;
   case mainwindow.WIN: groupBoxPadding = "3ex;";
@@ -223,7 +222,7 @@ var generalStyle = [ "* {",
   "background-color: " + selectedBg + ";",
 "}",
 "QRadioButton {",
-"  margin: " + multiButtonMargin + ";",
+  "margin: " + multiButtonMargin + ";",
 "}",
 "QRadioButton::indicator {",
   "background-color: " + bigBoxBorderColor + ";",
@@ -301,6 +300,19 @@ var generalStyle = [ "* {",
   "background-color: " + selectedBg + ";",
   "color: " + selectedFg + ";",
 "}",
+
+"QTreeView::item:selected QWidget {",
+  "height: 16px;",
+"}",
+
+"QTreeView::item:selected QComboBox {",
+  "color: " + selectedFg + ";",
+  "font-size: " + generalFontSize + ";",
+  "min-height: 15pt;", // generalFontSize + a bit
+  "padding: 1px;",
+  "margin: 0px;",
+"}",
+
 "QTreeWidget  {",
   "selection-background-color: transparent;",
 "}"
