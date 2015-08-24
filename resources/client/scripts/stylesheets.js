@@ -14,15 +14,17 @@ var selectedFg          = "#0177FF",
     smallBoxBorderColor = "#E8E8E8",
     smallBoxBg          = "#E8E8E8",
     generalFontSize     = "10pt",
-    reducedFontSize     = "9pt",
     borderRadius        = "4px",
     groupBoxPadding     = "1ex",
+    groupBoxTitleFontSize=generalFontSize,
+    tableHeadingFontSize= "10pt",
     multiButtonMargin   = "0.5ex",
     ;
 
 switch (mainwindow.getWindowSystem()) {
-  case mainwindow.MAC: generalFontSize = "12pt";
-                       reducedFontSize = "11pt";
+  case mainwindow.MAC: largeFontSize = "13pt";
+                       generalFontSize = "12pt";
+                       groupBoxTitleFontSize = "10pt";
                        break;
   case mainwindow.WIN: groupBoxPadding = "3ex;";
                        break;
@@ -126,12 +128,13 @@ var generalStyle = [ "* {",
 "  margin: " + multiButtonMargin + ";",
 "}",
 "QGroupBox {",
- "text-transform: uppercase;",
- "border-top: 1px solid " + smallBoxBorderColor + ";",
- "border-left: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #e8e8e8, stop: 0.05 #e8e8e8, stop: 0.06 #FFFFFF, stop: 1 #FFFFFF);",
-"border-right: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #e8e8e8, stop: 0.05 #e8e8e8, stop: 0.06 #FFFFFF, stop: 1 #FFFFFF);",
- "margin-top: 1ex;",
- "padding: " + groupBoxPadding + ";",
+  "text-transform: uppercase;",
+  "font-size: " + groupBoxTitleFontSize + ";",
+  "border-top: 1px solid " + smallBoxBorderColor + ";",
+  "border-left: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #e8e8e8, stop: 0.05 #e8e8e8, stop: 0.06 #FFFFFF, stop: 1 #FFFFFF);",
+  "border-right: 1px solid qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #e8e8e8, stop: 0.05 #e8e8e8, stop: 0.06 #FFFFFF, stop: 1 #FFFFFF);",
+  "margin-top: 1ex;",
+  "padding: " + groupBoxPadding + ";",
 "}",
 "QGroupBox::title {",
  "color: rgb(138, 138, 138);",
@@ -186,7 +189,7 @@ var generalStyle = [ "* {",
 "}",
 "QHeaderView::section {",
   "color: black;", // font-size doesn't work without this. why not?
-  "font-size: " + reducedFontSize + ";",
+  "font-size: " + tableHeadingFontSize + ";",
 "}",
 "QMenuBar::item:selected {",
   "background: " + selectedBg + ";",
