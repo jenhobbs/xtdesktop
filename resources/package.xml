@@ -2,7 +2,7 @@
          name="xtdesktop"
          developer="xTuple"
          descrip="xTuple Desktop"
-         version="4.0.1"
+         version="4.0.2"
          updater="2.2.4">
   <pkgnotes>
         xTuple Desktop navigational interface for the xTuple main window.
@@ -25,9 +25,7 @@ This package is an extension for xTuple ERP: PostBooks Edition, a free and open 
   <prerequisite type="Query"
                 name="Test xTuple ERP version">
     <query>
-      SELECT (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) > '4') 
-          OR (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) = '4'
-          AND SUBSTRING(fetchMetricText('ServerVersion') FROM 3 FOR 1)::numeric >= '9');
+      SELECT compareVersion(fetchMetricText('ServerVersion'), '4.9.0') >= 0;
     </query>
     <message>
       This version of the xtdesktop package only works with xTuple ERP
