@@ -33,20 +33,14 @@ include("dockSendMessage");
 include("dockUserOnline");
 include("desktopMenuBar");
 
-var _desktopStack;
+var _desktopStack = toolbox.createWidget("QStackedWidget", mainwindow, "_desktopStack");
 var _open = qsTr("Open...");
-var _dtTimer;
-var _leftAreaDocks = new Array();
-var _bottomAreaDocks = new Array();
+var _dtTimer = new QTimer(mainwindow);
 var _windows = new Array();
-var _hasSavedState = settingsValue("hasSavedState").length > 0;
-var _vToolBar = new Object;
-var _vToolBarActions = new Array();
+var _vToolBarActions      = []; // used only in addToolBarAction()
 var showDashboardAnything = false;
 
 var _mainMenu;
-var _shortcuts;
-var _employeeImage;
 var _employee;
 
 var _menuDesktop = new QMenu(qsTr("Desktop"),mainwindow);
@@ -61,48 +55,30 @@ addAction("sys.currencies","currencies","CreateNewCurrency","CreateNewCurrency")
 addAction("sys.exchangeRates","currencyConversions","MaintainCurrencyRates","ViewCurrencyRates");
 
 // Set up refresh timer
-_dtTimer = new QTimer(mainwindow);
 _dtTimer.setInterval(metrics.value("desktop/timer"));
 _dtTimer.start();
 
 // Setup the desktop layout
-_desktopWidget = toolbox.createWidget("QWidget", mainwindow, "_desktopWidget");
+var _desktopWidget = toolbox.createWidget("QWidget", mainwindow, "_desktopWidget");
 _desktopWidget.setStyleSheet(desktopStyle);
 _desktopLayout = toolbox.createLayout("QHBoxLayout", mainwindow, "_desktopLayout");
 _desktopMenu = toolbox.loadUi("desktopMenuBar", mainwindow);
 _desktopMenu.maximumWidth = 250;
-_desktopStack = toolbox.createWidget("QStackedWidget", mainwindow, "_desktopStack");
 _desktopLayout.addWidget(_desktopMenu);
 _desktopLayout.addWidget(_desktopStack);
 _desktopWidget.setLayout(_desktopLayout);
-var _desktopParent;
 
-// only show desktop when in free floating mode
-if (mainwindow.showTopLevel())
-  _desktopParent = mainwindow;
-
+var _desktopParent = mainwindow.showTopLevel() ? mainwindow : null;
 if (_desktopParent)
 {
   _desktopParent.setCentralWidget(_desktopWidget);
-  _vToolBar = new QToolBar(_desktopParent);
-  _desktopParent.addToolBar(Qt.LeftToolBarArea, _vToolBar);
 
-  // Initialise Menu Bar items
   setupDesktopMenu();
 
-  // Intialize the left toolbar (as of xtDesktop 4.0.0 no longer visible but the toolbar actions are still used)
-  _vToolBar.objectName = "_vToolBar";
-  _vToolBar.windowTitle = "Desktop Toolbar";
-  _vToolBar.floatable = false;
-  _vToolBar.movable = false;
-  _vToolBar.visible = false;  // Turn off left toolbar and replace with menus
-  _vToolBar.toolButtonStyle = Qt.ToolButtonTextOnly;
-
-  // Initialize Desktop
   // Set up browser for Welcome Page
   var _welcome = new QWebView(mainwindow);
   var welcomeUrl = (function () {
-    var databaseURL  = mainwindow.databaseURL(),
+  var databaseURL  = mainwindow.databaseURL(),
         string       = databaseURL.split("/"),
         hostName     = string[2].substring(0, string[2].indexOf(":")),
         databaseName = string[3],
@@ -121,7 +97,6 @@ if (_desktopParent)
   _welcome.page().linkDelegationPolicy = QWebPage.DelegateAllLinks;
   _desktopStack.addWidget(_welcome);
   addToolBarAction(qsTr("Welcome"), "home_32");
-  _vToolBarActions[0].checked = true;
 
   if (showDashboardAnything) {
     var _home = new QWebView(mainwindow);
@@ -173,15 +148,9 @@ if (_desktopParent)
   var maintWin = addDesktop("desktopMaintenance", "gear_32", "ViewMaintenanceDesktop");
   initDockExtensions();
 
-  // Hack to fix icon size problem until next core release
-  var maintToolbar = maintWin.findChild("_toolbar");
-  _vToolBar.iconSize = maintToolbar.iconSize;
-  maintWin.removeToolBar(maintToolbar);
-
   // Handle window actions
   _menuWindow.aboutToShow.connect(prepareWindowMenu);
 
-  // Change behavior of item site button if commercial edition
   if (metrics.boolean("MultiWhs"))
   {
     var button = mainwindow.findChild("_sites");
@@ -206,7 +175,7 @@ function addDesktop(uiName, imageName, privilege)
   // Get the UI and add to desktop stack
   var desktop = toolbox.loadUi(uiName);
   _desktopStack.addWidget(desktop);
-  _windows[_windows.length] = desktop;
+  _windows.push(desktop);
   addToolBarAction(desktop.windowTitle, imageName, privilege);
   desktop.restoreState();
   
@@ -218,12 +187,13 @@ function addDesktop(uiName, imageName, privilege)
 */
 function addToolBarAction(label, imageName, privilege)
 {
-  // Get the icon
-  var icn = new QIcon();
+  var act,
+      icn = new QIcon(),
+      menuItem;
   icn.addDbImage(imageName);
 
-  // Create the action (add to menu not seen to ensure priv rescans work)
-  var act = _menuToolBar.addAction(icn, label);
+  // create an action in an invisible menu to ensure priv rescans work
+  act = _menuToolBar.addAction(icn, label);
   if (act) {
     act.checkable = true;
     if (privilege)
@@ -232,12 +202,11 @@ function addToolBarAction(label, imageName, privilege)
       act.setData(privilege);
     }
 
-    _vToolBar.addAction(act);
-    _vToolBarActions[_vToolBarActions.length] = act;
-    _vToolBar["actionTriggered(QAction*)"].connect(toolbarActionTriggered);
+    _vToolBarActions.push(act);
 
     if (!privilege || privileges.check(privilege))
-      var menuItem = new XTreeWidgetItem(_mainMenu, _vToolBarActions.length, _vToolBarActions.length, qsTr(label));
+      menuItem = new XTreeWidgetItem(_mainMenu, _vToolBarActions.length,
+                                     _vToolBarActions.length, label);
   }
   else {
     print('addToolbarAction() could not add ' + label);
@@ -312,18 +281,6 @@ function prepareWindowMenu()
 //  _dockUserOnline.toggleViewAction().visible = (idx == 7);
   _menuWindow.addSeparator();
   _menuWindow.addMenu(_menuDesktop);
-}
-
-function toolbarActionTriggered(action)
-{
-  // Move to the desktop page specified
-  for (i in _vToolBarActions)
-  {
-    if (_vToolBarActions[i] == action)
-      _desktopStack.currentIndex = i
-    else
-      _vToolBarActions[i].checked = false;
-  }
 }
 
 function addAction(actionName, slotName, editPriv, viewPriv)

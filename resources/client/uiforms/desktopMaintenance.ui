@@ -32,9 +32,10 @@ to be bound by its terms.</comment>
      <widget class="QLabel" name="desktopAccountingLit">
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Open Sans,Helvetica,Verdana,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>25</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -652,23 +653,6 @@ to be bound by its terms.</comment>
      </item>
     </layout>
    </widget>
-  </widget>
-  <widget class="QToolBar" name="_toolbar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>32</width>
-     <height>32</height>
-    </size>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
  </widget>
  <customwidgets>
