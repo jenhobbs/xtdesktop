@@ -65,7 +65,9 @@ function shortcutsMenuPopulateList() {
 
   function getPath(objName, menu) {
     var actions, item, i, submenu;
-    if (menu.objectName === objName) {
+    if (! menu) {
+      return; // menu.sched is only defined if xtmfg is installed
+    } else if (menu.objectName === objName) {
       return [ menu ];
     } else if (menu.menu || menu.actions) {
       if (menu.menu) {
