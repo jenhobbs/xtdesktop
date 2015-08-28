@@ -351,11 +351,13 @@ function populateMenuCommentConsole(pMenu, pItem, pCol)
 
         // BOM window takes an item_id, not a bomhead_id!
         if (doctype == "BMH") {
-          q = toolbox.executeQuery("SELECT bomhead_item_id FROM bomhead"
+          q = toolbox.executeQuery("SELECT bomhead_item_id, bomhead_rev_id"
+                                 + "  FROM bomhead"
                                  + " WHERE bomhead_id = <? value('bomhead_id') ?>;",
                                    params);
           if (q.first()) {
             params.item_id = q.value("bomhead_item_id");
+            params.revision_id = q.value("bomhead_rev_id");
           } else if (q.lastError() != QSqlError.NoError) {
             throw q.lastError().text;
           }
