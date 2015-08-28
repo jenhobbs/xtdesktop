@@ -267,133 +267,128 @@
     <name>desktopMaintenance</name>
     <message>
         <location filename="../uiforms/desktopMaintenance.ui" line="21"/>
-        <location filename="../uiforms/desktopMaintenance.ui" line="41"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="42"/>
         <source>Maintenance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="48"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="49"/>
         <source>Products</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="63"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="64"/>
         <source>Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="85"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="86"/>
         <source>Bill of Materials</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="141"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="142"/>
         <source>Inventory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="156"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="157"/>
         <source>Site</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="178"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="179"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="184"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="185"/>
         <source>dspBillingSelections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="234"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="235"/>
         <source>Pricing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="249"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="250"/>
         <source>Schedules</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="271"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="272"/>
         <source>Assignments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="327"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="328"/>
         <source>Security</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="342"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="343"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="364"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="365"/>
         <source>Roles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="420"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="421"/>
         <source>Currency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="435"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="436"/>
         <source>Currencies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="454"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="455"/>
         <source>coin_clock_48</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="457"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="458"/>
         <source>Exchange Rates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="513"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="514"/>
         <source>Design</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="528"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="529"/>
         <source>Commands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="547"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="548"/>
         <source>Scripts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="569"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="570"/>
         <source>Screens</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="591"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="592"/>
         <source>Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="613"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="614"/>
         <source>MetaSQL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="636"/>
+        <location filename="../uiforms/desktopMaintenance.ui" line="637"/>
         <source>Extensions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../uiforms/desktopMaintenance.ui" line="658"/>
-        <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -514,6 +509,54 @@
     <message>
         <location filename="../uiforms/desktopManufacture.ui" line="578"/>
         <source>Work Orders</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>desktopMenuBar</name>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="17"/>
+        <source>MAIN MENU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="24"/>
+        <source>SHORTCUTS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="63"/>
+        <source> &gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="127"/>
+        <source>Edit Shortcuts...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="161"/>
+        <source>Insufficient Privileges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="161"/>
+        <source>You have insufficient permissions for this action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="163"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/desktopMenuBar.js" line="163"/>
+        <source>Could not find the shortcut action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/desktopMenuBar.ui" line="73"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Employee&lt;/p&gt;&lt;p&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -800,50 +843,50 @@
     <name>desktopSocial</name>
     <message>
         <location filename="../uiforms/desktopSocial.ui" line="14"/>
-        <location filename="../uiforms/desktopSocial.ui" line="32"/>
+        <location filename="../uiforms/desktopSocial.ui" line="33"/>
         <source>Social</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="54"/>
+        <location filename="../uiforms/desktopSocial.ui" line="55"/>
         <source>Comment Console</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="84"/>
-        <location filename="../uiforms/desktopSocial.ui" line="100"/>
-        <location filename="../uiforms/desktopSocial.ui" line="223"/>
-        <location filename="../uiforms/desktopSocial.ui" line="239"/>
+        <location filename="../uiforms/desktopSocial.ui" line="85"/>
+        <location filename="../uiforms/desktopSocial.ui" line="101"/>
+        <location filename="../uiforms/desktopSocial.ui" line="220"/>
+        <location filename="../uiforms/desktopSocial.ui" line="236"/>
         <source>b</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="121"/>
+        <location filename="../uiforms/desktopSocial.ui" line="122"/>
         <source>Send Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="131"/>
+        <location filename="../uiforms/desktopSocial.ui" line="142"/>
         <source>User:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="141"/>
+        <location filename="../uiforms/desktopSocial.ui" line="135"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="170"/>
+        <location filename="../uiforms/desktopSocial.ui" line="169"/>
         <source>Message:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="191"/>
+        <location filename="../uiforms/desktopSocial.ui" line="188"/>
         <source>Message History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopSocial.ui" line="254"/>
+        <location filename="../uiforms/desktopSocial.ui" line="251"/>
         <source>Users Online</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1969,360 +2012,30 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="117"/>
+        <location filename="../scripts/dockSendMessage.js" line="115"/>
         <source>Send Message?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="118"/>
+        <location filename="../scripts/dockSendMessage.js" line="116"/>
         <source>You are trying to Send Message to Yourself. Are you sure that you really want to Continue?.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="173"/>
-        <location filename="../scripts/dockSendMessage.js" line="186"/>
-        <location filename="../scripts/dockSendMessage.js" line="197"/>
+        <location filename="../scripts/dockSendMessage.js" line="169"/>
+        <location filename="../scripts/dockSendMessage.js" line="182"/>
+        <location filename="../scripts/dockSendMessage.js" line="193"/>
         <source>Database Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="238"/>
-        <source>Edit Address...</source>
+        <location filename="../scripts/dockSendMessage.js" line="321"/>
+        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="242"/>
-        <source>View Address...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="249"/>
-        <source>Edit Breeder Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="253"/>
-        <source>View Breeder Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="260"/>
-        <source>Edit Breeder Bill of Material Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="264"/>
-        <source>View Breeder Bill of Material Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="271"/>
-        <source>Edit Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="275"/>
-        <source>View Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="282"/>
-        <source>Edit BOM Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="286"/>
-        <source>View BOM Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="293"/>
-        <source>Edit BOO Head...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="297"/>
-        <source>View BOO Head...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="304"/>
-        <source>Edit BOO Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="308"/>
-        <source>View BOO Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="315"/>
-        <source>Edit CRM Account...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="320"/>
-        <source>View CRM Account...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="329"/>
-        <source>Edit Contact...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="334"/>
-        <source>View Contact...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="343"/>
-        <source>Edit Customer...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="347"/>
-        <source>View Customer...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="354"/>
-        <source>Edit Employee...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="358"/>
-        <source>View Employee...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="365"/>
-        <source>Edit Incident...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="370"/>
-        <source>View Incident...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="379"/>
-        <source>Edit Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="383"/>
-        <source>View Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="390"/>
-        <source>Edit ItemSite...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="394"/>
-        <source>View ItemSite...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="401"/>
-        <source>Edit ItemSource...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="405"/>
-        <source>View ItemSource...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="412"/>
-        <source>Edit Location...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="416"/>
-        <source>View Location...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="423"/>
-        <source>Edit LotSerial...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="426"/>
-        <source>View LotSerial...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="431"/>
-        <source>Edit Opportunity...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="436"/>
-        <source>View Opportunity...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="445"/>
-        <source>Edit Project...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="450"/>
-        <source>View Project...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="459"/>
-        <source>Edit Purchase Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="463"/>
-        <source>View Purchase Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="470"/>
-        <source>Edit Purchase Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="474"/>
-        <source>View Purchase Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="481"/>
-        <source>Edit Return Authorisation...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="485"/>
-        <source>View Return Authorisation...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="492"/>
-        <source>Edit Return Authorisation Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="496"/>
-        <source>View Return Authorisation Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="503"/>
-        <source>Edit Quote...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="507"/>
-        <source>View Quote...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="514"/>
-        <source>Edit Quote Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="518"/>
-        <source>View Quote Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="525"/>
-        <source>Edit Sales Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="529"/>
-        <source>View Sales Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="536"/>
-        <source>Edit Sales Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="540"/>
-        <source>View Sales Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="547"/>
-        <source>Edit Task...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="552"/>
-        <source>View Task...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="561"/>
-        <source>Edit TodoItem...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="566"/>
-        <source>View TodoItem...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="575"/>
-        <source>Edit Transfer Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="579"/>
-        <source>View Transfer Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="586"/>
-        <source>Edit Transfer Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="590"/>
-        <source>View Transfer Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="597"/>
-        <source>Edit Vendor...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="601"/>
-        <source>View Vendor...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="608"/>
-        <source>Edit WareHouse...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="612"/>
-        <source>View WareHouse...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="619"/>
-        <source>Edit Work Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="623"/>
-        <source>View Work Order...</source>
+        <location filename="../scripts/dockSendMessage.js" line="325"/>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2377,27 +2090,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="52"/>
+        <location filename="../scripts/initMenu.js" line="46"/>
         <source>Desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="57"/>
+        <location filename="../scripts/initMenu.js" line="51"/>
         <source>Setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="123"/>
+        <location filename="../scripts/initMenu.js" line="99"/>
         <source>Welcome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="137"/>
+        <location filename="../scripts/initMenu.js" line="112"/>
         <source>Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="188"/>
+        <location filename="../scripts/initMenu.js" line="157"/>
         <source>Sites</source>
         <translation type="unfinished"></translation>
     </message>
