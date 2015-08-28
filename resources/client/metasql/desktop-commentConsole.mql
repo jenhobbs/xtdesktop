@@ -4,7 +4,7 @@
 -- Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 
-SELECT 
+SELECT
     comment_source_id,
     comment_date,
     cmnttype_name,
@@ -66,25 +66,27 @@ SELECT
 -- BOMHead
           WHEN comment_source = 'BMH' THEN
               (SELECT item_descrip1 || ' - ' || item_number
-               FROM bomhead, item
+               FROM item, bomhead
+               LEFT JOIN rev ON ((rev_id = bomhead_rev_id) AND (bomhead_item_id = item_id))
                WHERE ((comment_source_id = bomhead_item_id)
                   AND (bomhead_item_id = item_id)
-                  AND (comment_source = 'BMH')))
+                  AND (comment_source = 'BMH')
+                  AND (rev_status = 'A' OR coalesce(bomhead_rev_id, -1) < 0)))
 
--- BOM Item 
+-- BOM Item
         WHEN comment_source = 'BMI' THEN
               (
-               (SELECT 'Parent - ' || item.item_descrip1 || ' - ' || item.item_number FROM 
-                                     public.bomitem, 
+               (SELECT 'Parent - ' || item.item_descrip1 || ' - ' || item.item_number FROM
+                                     public.bomitem,
                                      public.item
-                                     WHERE bomitem.bomitem_parent_item_id = item.item_id AND 
+                                     WHERE bomitem.bomitem_parent_item_id = item.item_id AND
                                            bomitem_id = comment_source_id
-                                           AND comment_source = 'BMI') 
+                                           AND comment_source = 'BMI')
                || ' - ' ||
-               (SELECT 'BOM Item - ' || item.item_descrip1 || ' - ' || item.item_number FROM 
-                                     public.bomitem, 
+               (SELECT 'BOM Item - ' || item.item_descrip1 || ' - ' || item.item_number FROM
+                                     public.bomitem,
                                      public.item
-                                     WHERE bomitem.bomitem_item_id = item.item_id AND 
+                                     WHERE bomitem.bomitem_item_id = item.item_id AND
                                            bomitem_id = comment_source_id
                                            AND comment_source = 'BMI')
                                            )
@@ -113,8 +115,8 @@ SELECT
 
 -- T  Contact
         WHEN comment_source = 'T' THEN
-             (SELECT cntct_first_name || ' ' || cntct_last_name FROM cntct 
-                     WHERE cntct_id = comment_source_id 
+             (SELECT cntct_first_name || ' ' || cntct_last_name FROM cntct
+                     WHERE cntct_id = comment_source_id
                            AND comment_source = 'T'
               )
 -- Opportunity
@@ -126,7 +128,7 @@ SELECT
                FROM ophead
                     LEFT OUTER JOIN crmacct ON (ophead_crmacct_id = crmacct_id)
                     LEFT OUTER JOIN incdtpriority ON (ophead_priority_id = incdtpriority_id)
-               WHERE 
+               WHERE
                     comment_source = 'OPP'
                     AND comment_source_id = ophead_id
 	      )
@@ -150,7 +152,7 @@ SELECT
 -- Employee
         WHEN comment_source = 'EMP' THEN
               (SELECT emp_code || '-' || emp_name
-               FROM emp 
+               FROM emp
                WHERE((comment_source_id = emp_id)
                  AND (comment_source = 'EMP')))
 
@@ -158,11 +160,11 @@ SELECT
         WHEN comment_source = 'INCDT' THEN
               (
                SELECT incdt_number || ' - ' ||
-                      crmacct_number || ' - ' || 
-                      crmacct_name || ' - ' || 
+                      crmacct_number || ' - ' ||
+                      crmacct_name || ' - ' ||
                       incdt_summary
-                FROM incdt, crmacct 
-                WHERE 
+                FROM incdt, crmacct
+                WHERE
                 incdt_id = comment_source_id
                 AND crmacct_id = incdt_crmacct_id
                 AND (comment_source = 'INCDT')
@@ -170,14 +172,14 @@ SELECT
 
 -- Item
         WHEN comment_source = 'I' THEN
-              (SELECT item_number || ' - ' || item_descrip1 
+              (SELECT item_number || ' - ' || item_descrip1
                       FROM item WHERE item_id = comment_source_id
                                  AND (comment_source = 'I'))
 
 -- Item Site
         WHEN comment_source = 'IS' THEN
               (
-               SELECT item_number || ' - ' || item_descrip1 
+               SELECT item_number || ' - ' || item_descrip1
                FROM item, itemsite
                WHERE itemsite_item_id = item_id
                      AND itemsite_id = comment_source_id
@@ -187,7 +189,7 @@ SELECT
 -- ItemSource
         WHEN comment_source = 'IR' THEN
               (
-               SELECT item_number || ' - ' || item_descrip1 
+               SELECT item_number || ' - ' || item_descrip1
                FROM item, itemsrc
                WHERE itemsrc_item_id = item_id
                      AND itemsrc_id = comment_source_id
@@ -196,8 +198,8 @@ SELECT
 
 -- Location
         WHEN comment_source = 'L' THEN
-              (SELECT location_name || ' - ' || location_descrip 
-               FROM location 
+              (SELECT location_name || ' - ' || location_descrip
+               FROM location
                WHERE location_id = comment_source_id
                 AND (comment_source = 'L'))
 
@@ -205,15 +207,15 @@ SELECT
   <? if exists("xtmfg_exist") ?>
         WHEN comment_source = 'LS' THEN
               (SELECT ls_number || '-' || item_number || '-' || item_descrip1 || item_descrip2
-               FROM ls, item 
+               FROM ls, item
                WHERE(ls_id = comment_source_id)
                  AND(ls_item_id = item_id)
                 AND (comment_source = 'LS'))
  <? endif ?>
--- Project 
+-- Project
         WHEN comment_source = 'J' THEN
         (
-              SELECT  'Project#: ' || prj_number || ' - Descrip: ' || prj_descrip || 
+              SELECT  'Project#: ' || prj_number || ' - Descrip: ' || prj_descrip ||
                       ' - Status: ' || prj_status || ' - Owner: ' || prj_owner_username || '- Due: ' || prj_due_date
               FROM prj
               WHERE
@@ -241,8 +243,8 @@ SELECT
                              AND comment_source_id = poitem_id
                              AND comment_source = 'PI'
                       )
-                      || ' - ' || poitem_vend_item_number 
-                      || ' - ' || poitem_vend_item_descrip 
+                      || ' - ' || poitem_vend_item_number
+                      || ' - ' || poitem_vend_item_descrip
                FROM pohead, vendinfo, poitem
                WHERE pohead_vend_id = vend_id
                      AND poitem_pohead_id = pohead_id
@@ -254,17 +256,17 @@ SELECT
         (
                SELECT 'Quote#: ' || quhead_number || ' - Customer: ' ||  cust_number || ' - ' || cust_name
                FROM quhead, custinfo
-               WHERE quhead_cust_id = cust_id 
+               WHERE quhead_cust_id = cust_id
                      AND quhead_id = comment_source_id
                      AND comment_source = 'Q'
         )
 -- Quote Item
         WHEN comment_source = 'QI' THEN
         (
-                SELECT 'Quote#:  ' || quhead_number || '  Customer  ' || cust_number || ' - ' || 
+                SELECT 'Quote#:  ' || quhead_number || '  Customer  ' || cust_number || ' - ' ||
                         cust_name || '  Line #: ' || quitem_linenumber || ' - ' || ' Item#: ' || item_number || ' - ' || item_descrip1 || ' - Order Qty: '                        || formatQty(quitem_qtyord)
                      FROM quhead, quitem, item, itemsite, custinfo
-              
+
                  WHERE
                       quitem_quhead_id = quhead_id
                       AND quhead_cust_id = cust_id
@@ -279,7 +281,7 @@ SELECT
               (
                SELECT rahead_number || ' - ' || cust_number || ' - ' || cust_name
                FROM rahead, custinfo
-               WHERE rahead_cust_id = cust_id 
+               WHERE rahead_cust_id = cust_id
                      AND rahead_id = comment_source_id
                      AND comment_source = 'RA'
               )
@@ -289,17 +291,17 @@ SELECT
               (
                SELECT cohead_number || ' - ' ||  cust_number || ' - ' || cust_name
                FROM cohead, custinfo
-               WHERE cohead_cust_id = cust_id 
+               WHERE cohead_cust_id = cust_id
                      AND cohead_id = comment_source_id
                      AND comment_source = 'S'
               )
--- SO Item 
+-- SO Item
         WHEN comment_source = 'SI' THEN
               (
-                SELECT 'Sales Order:  ' || cohead_number || '  Customer  ' || cust_number || ' - ' || 
+                SELECT 'Sales Order:  ' || cohead_number || '  Customer  ' || cust_number || ' - ' ||
                         cust_name || '  Line #: ' || coitem_linenumber || ' - ' || ' Item#: ' || item_number || ' - ' || item_descrip1 || ' - Order Qty: '                        || formatQty(coitem_qtyord)
                      FROM cohead, coitem, item, itemsite, custinfo
-              
+
                  WHERE
                       coitem_cohead_id = cohead_id
                       AND cohead_cust_id = cust_id
@@ -332,9 +334,9 @@ SELECT
   <? if exists("xtmfg_exist") ?>
         WHEN comment_source = 'TO' THEN
               (
-               SELECT 'Transfer#: ' || tohead_number || ' - Status: ' || tohead_status || ' - Source / Dest: ' ||  
+               SELECT 'Transfer#: ' || tohead_number || ' - Status: ' || tohead_status || ' - Source / Dest: ' ||
                       (SELECT warehous_code FROM whsinfo WHERE warehous_id = tohead_src_warehous_id) || ' / ' ||
-                      (SELECT warehous_code FROM whsinfo WHERE warehous_id = tohead_dest_warehous_id) 
+                      (SELECT warehous_code FROM whsinfo WHERE warehous_id = tohead_dest_warehous_id)
                FROM tohead
                WHERE tohead_id = comment_source_id
                  AND comment_source = 'TO'
@@ -344,13 +346,13 @@ SELECT
   <? if exists("xtmfg_exist") ?>
         WHEN comment_source = 'TI' THEN
               (
-               SELECT 'Transfer#: ' || tohead_number || ' - Status: ' || tohead_status || ' - Source / Dest: ' ||  
+               SELECT 'Transfer#: ' || tohead_number || ' - Status: ' || tohead_status || ' - Source / Dest: ' ||
                       (SELECT warehous_code FROM whsinfo WHERE warehous_id = tohead_src_warehous_id) || ' / ' ||
                       (SELECT warehous_code FROM whsinfo WHERE warehous_id = tohead_dest_warehous_id) ||
                       ' - Item: ' || item_number || ' - ' || item_descrip1 || ' - Qty: ' || formatQty(toitem_qty_ordered)
                FROM   tohead, toitem, item
-               WHERE 
-                    toitem_item_id = item_id  
+               WHERE
+                    toitem_item_id = item_id
                     AND toitem_tohead_id = tohead_id
                     AND toitem_id = comment_source_id
                     AND comment_source = 'TI'
@@ -365,22 +367,22 @@ SELECT
                           AND comment_source = 'V'
                )
 
--- Warehouse 
-        WHEN comment_source = 'WH' THEN 
-              (SELECT warehous_code || ' - ' || warehous_descrip 
+-- Warehouse
+        WHEN comment_source = 'WH' THEN
+              (SELECT warehous_code || ' - ' || warehous_descrip
                       FROM whsinfo WHERE warehous_id = comment_source_id
                                      AND comment_source = 'WH')
 
 -- Work Order
         WHEN comment_source = 'W' THEN
               (
-              SELECT 
-                         'WO#: ' || wo_number || ' - ' || 
-                         wo_subnumber || ' - ' || 
-                         'Status: ' || wo_status || ' - ' || 
-                         'Ordered: ' || formatQty(wo_qtyord) || ' - ' || 
-                         'Received: ' || formatQty(wo_qtyrcv) || ' - ' || 
-                         'Item: ' || item_number || ' - ' || 
+              SELECT
+                         'WO#: ' || wo_number || ' - ' ||
+                         wo_subnumber || ' - ' ||
+                         'Status: ' || wo_status || ' - ' ||
+                         'Ordered: ' || formatQty(wo_qtyord) || ' - ' ||
+                         'Received: ' || formatQty(wo_qtyrcv) || ' - ' ||
+                         'Item: ' || item_number || ' - ' ||
                          item_descrip1
              FROM  wo, itemsite, item
              WHERE wo_itemsite_id = itemsite_id
@@ -399,7 +401,7 @@ WHERE
          AND cmnttype_id IN (<? literal("commenttype_id") ?>)
     <? endif ?>
     --Example: these are the names given to the various comment types like 'General' or "ChangeLog' or those defined by the user.
-    --This query will give you a list of them: 
+    --This query will give you a list of them:
     --SELECT DISTINCT cmnttype_name, cmnttype_name  FROM cmnttype ORDER BY cmnttype_name;
 -- AND comment_text LIKE '%'
     --Example: 'Created%' for all comments that start with the work 'Created'
@@ -432,5 +434,5 @@ WHERE
     --SELECT DISTINCT comment_source FROM comment ORDER BY comment_source;
     --Example: Incidents = 'INCDT'
    AND CAST(comment_date AS DATE) BETWEEN <? value("startDate") ?> AND <? value("endDate") ?>
-ORDER BY 
+ORDER BY
     comment_date, comment_user, comment_source;
