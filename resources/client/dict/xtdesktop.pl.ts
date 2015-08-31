@@ -223,10 +223,6 @@
 <context>
     <name>desktopMaintenance</name>
     <message>
-        <source>toolBar</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>coin_clock_48</source>
         <translation type="unfinished"></translation>
     </message>
@@ -419,6 +415,45 @@
     </message>
     <message>
         <source>Create Work Order</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>desktopMenuBar</name>
+    <message>
+        <source>MAIN MENU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SHORTCUTS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> &gt; </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit Shortcuts...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insufficient Privileges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have insufficient permissions for this action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not find the shortcut action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Employee&lt;/p&gt;&lt;p&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1599,275 +1634,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edit Address...</source>
+        <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>View Address...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Breeder Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Breeder Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Breeder Bill of Material Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Breeder Bill of Material Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Bill of Material...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit BOM Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View BOM Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit BOO Head...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View BOO Head...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit BOO Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View BOO Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit CRM Account...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View CRM Account...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Contact...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Contact...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Customer...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Customer...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Employee...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Employee...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Incident...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Incident...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit ItemSite...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View ItemSite...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit ItemSource...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View ItemSource...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Location...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Location...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit LotSerial...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View LotSerial...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Opportunity...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Opportunity...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Project...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Project...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Purchase Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Purchase Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Purchase Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Purchase Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Return Authorisation...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Return Authorisation...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Return Authorisation Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Return Authorisation Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Quote...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Quote...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Quote Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Quote Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Sales Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Sales Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Sales Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Sales Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Task...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Task...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit TodoItem...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View TodoItem...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Transfer Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Transfer Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Transfer Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Transfer Order Item...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Vendor...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Vendor...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit WareHouse...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View WareHouse...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit Work Order...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View Work Order...</source>
+        <source>View</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

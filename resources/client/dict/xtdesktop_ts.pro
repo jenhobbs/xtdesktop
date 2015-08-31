@@ -10,6 +10,7 @@ FORMS = \
          ../uiforms/desktopCRM.ui               \
          ../uiforms/desktopMaintenance.ui       \
          ../uiforms/desktopManufacture.ui       \
+         ../uiforms/desktopMenuBar.ui           \
          ../uiforms/desktopNotice.ui            \
          ../uiforms/desktopPurchase.ui          \
          ../uiforms/desktopSales.ui             \
@@ -22,6 +23,7 @@ FORMS = \
 
 SOURCES = \
         ../scripts/contact.js                   \
+        ../scripts/desktopMenuBar.js            \
         ../scripts/desktopNotice.js             \
         ../scripts/dockBankBal.js               \
         ../scripts/dockExtensions.js            \
@@ -43,6 +45,7 @@ SOURCES = \
         ../scripts/dockSalesOpen.js             \
         ../scripts/dockSendMessage.js           \
         ../scripts/dockUserOnline.js            \
+        ../scripts/hotkey.js                    \
         ../scripts/incident.js                  \
         ../scripts/initMenu.js                  \
         ../scripts/preferencesComment.js        \
@@ -51,6 +54,7 @@ SOURCES = \
         ../scripts/preferencesSelections.js     \
         ../scripts/project.js                   \
         ../scripts/sendMessageToUser.js         \
+        ../scripts/stylesheets.js               \
         ../scripts/systemMessage.js             \
         ../scripts/task.js                      \
         ../scripts/todoItem.js                  \
