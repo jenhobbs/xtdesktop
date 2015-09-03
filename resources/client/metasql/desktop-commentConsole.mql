@@ -68,11 +68,15 @@ SELECT
               (SELECT item_descrip1 || ' - ' || item_number
                FROM item
                JOIN bomhead ON (bomhead_item_id = item_id)
+<? if exists('hasRev') ?>
                LEFT JOIN rev ON (rev_id = bomhead_rev_id)
-               WHERE ((comment_source_id = bomhead_item_id)
-                  AND (bomhead_item_id = item_id)
+<? endif ?>
+               WHERE (comment_source_id = bomhead_item_id)
                   AND (comment_source = 'BMH')
-                  AND (rev_status = 'A' OR coalesce(bomhead_rev_id, -1) < 0)))
+<? if exists('hasRev') ?>
+                  AND (rev_status = 'A' OR coalesce(bomhead_rev_id, -1) < 0)
+<? endif ?>
+               )
 
 -- BOM Item
         WHEN comment_source = 'BMI' THEN
