@@ -157,37 +157,26 @@ function fillListCommentConsole()
 
   var params = new Object;
 
-  //Checking whether xtmfg package exists in the database or not
-  var checkxtmfg = "SELECT pkghead_id "
-                 + "FROM pkghead "
-                 + "WHERE (pkghead_name = 'xtmfg');";
-  var datacheckxtmfg = toolbox.executeQuery(checkxtmfg, params);
-  if (datacheckxtmfg.first())
-    params.xtmfg_exist = datacheckxtmfg.value("pkghead_id");
-  else if (datacheckxtmfg.lastError().type != QSqlError.NoError)
-  {
-    QMessageBox.critical(mainwindow, qsTr("Database Error"),
-                         datacheckxtmfg.lastError().text);
-    return;
-  }
+  var getDate = "SELECT CURRENT_DATE + CAST(<? literal('startOffSet') ?> AS INTEGER) AS start,"
+              + "       CURRENT_DATE + CAST(<? literal('endOffSet')   ?> AS INTEGER) AS end,"
+              + "       EXISTS(SELECT 1"
+              + "                FROM pg_class JOIN pg_namespace n ON relnamespace = n.oid"
+              + "               WHERE relname = 'rev') AS hasRev,"
+              + "       EXISTS(SELECT 1 FROM pkghead WHERE pkghead_name = 'xtmfg') AS hasMFG"
+              + ";";
 
-  var getDate = "SELECT CURRENT_DATE + CAST(<? literal('offSet') ?> AS INTEGER) AS datevalue;";
-
-  params.offSet = ((preferences.value("MonitoredCommentStrtDate") != '')?preferences.value("MonitoredCommentStrtDate"):-1);
+  params.startOffSet = ((preferences.value("MonitoredCommentStrtDate") != '')?preferences.value("MonitoredCommentStrtDate"):-1);
+  params.endOffSet   = ((preferences.value("MonitoredCommentEndDate")  != '')?preferences.value("MonitoredCommentEndDate"):0);
   var data = toolbox.executeQuery(getDate, params);
   if (data.first())
-    params.startDate = data.value("datevalue");
-  else if (data.lastError().type != QSqlError.NoError)
   {
-    QMessageBox.critical(mainwindow, qsTr("Database Error"),
-                         data.lastError().text);
-    return;
+    params.startDate = data.value("start");
+    params.endDate   = data.value("end");
+    if (data.value("hasRev"))
+      params.hasRev  = 'hasRev';    // mql uses <? if exists() ?>
+    if (data.value("hasMFG"))
+      params.xtmfg_exist = 'hasMFG';
   }
-
-  params.offSet = ((preferences.value("MonitoredCommentEndDate") != '')?preferences.value("MonitoredCommentEndDate"):0);
-  var data = toolbox.executeQuery(getDate, params);
-  if (data.first())
-    params.endDate = data.value("datevalue");
   else if (data.lastError().type != QSqlError.NoError)
   {
     QMessageBox.critical(mainwindow, qsTr("Database Error"),
