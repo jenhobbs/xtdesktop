@@ -22,11 +22,13 @@ var selectedFg          = "#0177FF",
     multiButtonMargin   = "0.5ex",
     windowBg            = "#FAAFAAFAA",
     toolbarBg           = "#DFFDFFDFF",
+    layeredWindowBg     = windowBg,
     ;
 
 switch (mainwindow.getWindowSystem()) {
   case mainwindow.MAC: generalFontSize       = "12pt";
                        groupBoxTitleFontSize = "10pt";
+                       layerdWindowBg        = "transparent";
                        break;
   case mainwindow.X11: tableHeadingFontSize = "9pt";
                        break;
@@ -215,7 +217,7 @@ var generalStyle = [ "* {",
   "background: " + windowBg + ";",
 "}",
 "QMainWindow QMainWindow, QMainWindow XWidget {",
-  "background: transparent;",
+  "background: " + layeredWindowBg + ";",
 "}",
 "QMenuBar::item:selected {",
   "background: " + selectedBg + ";",
@@ -375,6 +377,12 @@ var desktopStyle = generalStyle +
   "}",
   "QPushButton {",
     "border: none;",
+  "}",
+  "QWidget#dockWidgetContents QPushButton#_send {",
+    "border-radius: " + borderRadius + ";",
+    "border:  1px solid " + bigBoxBorderColor + ";",
+    "margin:  0.75ex;",
+    "padding: 0.50ex;",
   "}",
   "QHeaderView::section {",
     "background-color: transparent;",
