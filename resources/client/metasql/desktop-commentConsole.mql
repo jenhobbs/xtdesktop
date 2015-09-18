@@ -161,6 +161,13 @@ SELECT
                WHERE((comment_source_id = emp_id)
                  AND (comment_source = 'EMP')))
 
+-- Exchange Rate
+        WHEN comment_source = 'FX' THEN
+              (SELECT curr_abbr || ' - ' || curr_name
+               FROM curr_symbol
+               WHERE((comment_source_id = curr_id)
+                 AND (comment_source = 'FX')))
+
 -- Incident
         WHEN comment_source = 'INCDT' THEN
               (
