@@ -19,6 +19,7 @@ _timeFrame.append(0, qsTr("Today"), "day");
 _timeFrame.append(1, qsTr("This Week"), "week");
 _timeFrame.append(2, qsTr("This Month"), "month");
 _timeFrame.append(3, qsTr("This Year"), "year");
+_timeFrame.append(4, qsTr("This Fiscal Year"), "fiscal_year");
 
 mydialog.accepted.connect(save);
 
