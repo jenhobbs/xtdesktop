@@ -140,6 +140,8 @@ function fillListSalesHist()
     timeFrame = qsTr("this Month");
   else if (_timeFrameSalesHist == "year")
     timeFrame = qsTr("this Year");
+  else if (_timeFrameSalesHist == "fiscal_year")
+    timeFrame = qsTr("this Fiscal Year");
 
   _labelSalesHist.text = type + " " + timeFrame;
 
@@ -159,9 +161,16 @@ function getDatesSalesHist()
 {
   var params = new Object;
 
-  params.timeFrame = _timeFrameSalesHist;
-  params.interval = "1 " + _timeFrameSalesHist;
-
+  if (_timeFrameSalesHist == "fiscal_year") 
+  {
+	params.timeFrameFiscal = _timeFrameSalesHist;
+	}
+  
+  else 
+  {
+    params.timeFrame = _timeFrameSalesHist;
+    params.interval = "1 " + _timeFrameSalesHist;
+  }
   var q = toolbox.executeDbQuery("desktop", "getDates", params);
 
   if (q.first())
