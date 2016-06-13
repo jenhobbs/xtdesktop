@@ -385,7 +385,7 @@ var desktopStyle = generalStyle +
     "padding: 0.50ex;",
   "}",
   "QHeaderView::section {",
-    "background-color: transparent;",
+    "background-color: " + selectedBg + ";",
   "}",
 ].join(" ");
 
