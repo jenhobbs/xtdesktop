@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.1">
 <context>
     <name>desktop</name>
     <message>
@@ -1549,6 +1549,10 @@
         <source>Reload</source>
         <translation>Recharger</translation>
     </message>
+    <message>
+        <source>this Fiscal Year</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>dockSalesOpen</name>
@@ -1802,6 +1806,10 @@
     <message>
         <source>Receipts</source>
         <translation>Réceptions</translation>
+    </message>
+    <message>
+        <source>This Fiscal Year</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

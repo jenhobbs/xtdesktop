@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.1">
 <context>
     <name>ARAging</name>
     <message>
@@ -1563,6 +1563,10 @@
         <source>Qty.</source>
         <translation type="unfinished">Количество.</translation>
     </message>
+    <message>
+        <source>this Fiscal Year</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>dockSalesOpen</name>
@@ -1816,6 +1820,10 @@
     <message>
         <source>Sales</source>
         <translation type="unfinished">Продажби</translation>
+    </message>
+    <message>
+        <source>This Fiscal Year</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
