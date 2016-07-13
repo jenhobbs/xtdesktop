@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.1">
 <context>
     <name>desktop</name>
     <message>
@@ -1905,38 +1905,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSalesHistory.js" line="260"/>
+        <location filename="../scripts/dockSalesHistory.js" line="144"/>
+        <source>this Fiscal Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/dockSalesHistory.js" line="269"/>
         <source>Customer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSalesHistory.js" line="261"/>
-        <location filename="../scripts/dockSalesHistory.js" line="271"/>
+        <location filename="../scripts/dockSalesHistory.js" line="270"/>
+        <location filename="../scripts/dockSalesHistory.js" line="280"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSalesHistory.js" line="265"/>
+        <location filename="../scripts/dockSalesHistory.js" line="274"/>
         <source>Product Category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSalesHistory.js" line="266"/>
+        <location filename="../scripts/dockSalesHistory.js" line="275"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSalesHistory.js" line="270"/>
+        <location filename="../scripts/dockSalesHistory.js" line="279"/>
         <source>Sales Rep.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSalesHistory.js" line="274"/>
+        <location filename="../scripts/dockSalesHistory.js" line="283"/>
         <source>Amount</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSalesHistory.js" line="275"/>
+        <location filename="../scripts/dockSalesHistory.js" line="284"/>
         <source>Qty.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2022,19 +2027,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="169"/>
         <location filename="../scripts/dockSendMessage.js" line="182"/>
-        <location filename="../scripts/dockSendMessage.js" line="193"/>
         <source>Database Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="321"/>
+        <location filename="../scripts/dockSendMessage.js" line="310"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockSendMessage.js" line="325"/>
+        <location filename="../scripts/dockSendMessage.js" line="314"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2165,79 +2168,84 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="35"/>
-        <source>Bookings</source>
+        <location filename="../scripts/preferencesHistory.js" line="22"/>
+        <source>This Fiscal Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../scripts/preferencesHistory.js" line="36"/>
+        <source>Bookings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/preferencesHistory.js" line="37"/>
         <source>Sales</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="38"/>
+        <location filename="../scripts/preferencesHistory.js" line="39"/>
         <source>Customer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="39"/>
+        <location filename="../scripts/preferencesHistory.js" line="40"/>
         <source>Product Category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="40"/>
+        <location filename="../scripts/preferencesHistory.js" line="41"/>
         <source>Sales Rep</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="42"/>
+        <location filename="../scripts/preferencesHistory.js" line="43"/>
         <source>Sales History Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="46"/>
-        <location filename="../scripts/preferencesHistory.js" line="57"/>
+        <location filename="../scripts/preferencesHistory.js" line="47"/>
+        <location filename="../scripts/preferencesHistory.js" line="58"/>
         <source>Receipts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="47"/>
+        <location filename="../scripts/preferencesHistory.js" line="48"/>
         <source>Variances</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="49"/>
+        <location filename="../scripts/preferencesHistory.js" line="50"/>
         <source>Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="50"/>
-        <location filename="../scripts/preferencesHistory.js" line="61"/>
+        <location filename="../scripts/preferencesHistory.js" line="51"/>
+        <location filename="../scripts/preferencesHistory.js" line="62"/>
         <source>Item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="51"/>
+        <location filename="../scripts/preferencesHistory.js" line="52"/>
         <source>Purchase Agent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="53"/>
+        <location filename="../scripts/preferencesHistory.js" line="54"/>
         <source>Purchase History Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="60"/>
+        <location filename="../scripts/preferencesHistory.js" line="61"/>
         <source>Class Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="62"/>
+        <location filename="../scripts/preferencesHistory.js" line="63"/>
         <source>Planner Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/preferencesHistory.js" line="64"/>
+        <location filename="../scripts/preferencesHistory.js" line="65"/>
         <source>Manufacture History Preferences</source>
         <translation type="unfinished"></translation>
     </message>
