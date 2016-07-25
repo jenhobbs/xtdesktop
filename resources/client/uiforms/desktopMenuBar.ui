@@ -25,6 +25,9 @@ to be bound by its terms.</comment>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QGroupBox" name="box">
+    <layout class="QVBoxLayout" name="verticalLayout2">
+    <item>
     <widget class="XTreeWidget" name="_shortcutMenu">
      <property name="maximumSize">
       <size>
@@ -75,6 +78,9 @@ to be bound by its terms.</comment>
       </widget>
      </item>
     </layout>
+   </item>
+   </layout>
+   </widget>
    </item>
   </layout>
  </widget>
