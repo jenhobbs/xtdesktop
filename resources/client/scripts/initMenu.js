@@ -78,18 +78,28 @@ if (_desktopParent)
   // Set up browser for Welcome Page
   var _welcome = new QWebView(mainwindow);
   var welcomeUrl = (function () {
-  var databaseURL  = mainwindow.databaseURL(),
-        string       = databaseURL.split("/"),
-        hostName     = string[2].substring(0, string[2].indexOf(":")),
-        databaseName = string[3],
-        urlString = metrics.value("desktop/welcome")
-                  + "?client=desktop" + "&hostname=" + hostName
-                  + "&organization=" + databaseName
-                  + "&edition=" + metrics.value("Application")
-                  + "&version=" + metrics.value("ServerVersion")
-    ;
-    return new QUrl(urlString);
-  })();
+      var string       = mainwindow.databaseURL().split("/"),
+          hostName     = string[2].substring(0, string[2].indexOf(":")),
+          databaseName = string[3],
+          urlString = metrics.value("desktop/welcome")
+                    + "?client=desktop"
+                    + "&hostname="      + hostName
+                    + "&organization="  + databaseName
+                    + "&weare="         + metrics.value("remitto_name")
+                    + "&key="           + metrics.value("RegistrationKey")
+                    + "&edition="       + metrics.value("Application")
+                    + "&version="       + metrics.value("ServerVersion"),
+          qry
+      ;
+      qry = toolbox.executeQuery("select pkghead_name, pkghead_version"
+                               + "  from pkghead order by pkghead_name;");
+      while (qry.next()) {
+        urlString += "&" + qry.value("pkghead_name")
+                   + "=" + qry.value("pkghead_version");
+      }
+
+      return new QUrl(urlString);
+    })();
   _welcome.objectName = "_welcome";
   _welcome["loadFinished(bool)"].connect(loadLocalHtml);
   _welcome["linkClicked(const QUrl &)"].connect(openUrl);
