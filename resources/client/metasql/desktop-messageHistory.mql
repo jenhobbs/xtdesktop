@@ -1,11 +1,11 @@
 -- Group: desktop
 -- Name:  messageHistory
 -- Notes:
--- Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
+-- Copyright (c) 1999-2016 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 
-SELECT 
-  msg_id, 
+SELECT
+  msg_id,
   msg_posted AS sent,
   CASE WHEN (msg_username = geteffectivextuser()) THEN 'me'
        ELSE msg_username END AS from,
@@ -18,8 +18,8 @@ WHERE (a.msg_username = geteffectivextuser())
 
 UNION
 
-SELECT 
-  msg_id, 
+SELECT
+  msg_id,
   msg_posted AS sent,
   CASE WHEN (msg_username = geteffectivextuser()) THEN 'me'
        ELSE msg_username END AS from,
