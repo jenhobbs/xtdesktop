@@ -1,27 +1,19 @@
 -- Group: desktop
 -- Name:  getDates
--- Notes: 
--- Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
+-- Notes: get the pair of dates that describe the entire current year
+-- Copyright (c) 1999-2016 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 
--- Added changes to support selecting a fiscal year
-
 <? if exists("timeFrameFiscal")?>
+  SELECT yearperiod_start AS startDate,
+          yearperiod_end AS endDate
+    FROM yearperiod
+   WHERE yearperiod_start < current_date
+     AND yearperiod_end   > current_date
 
-	SELECT 
-		yearperiod_start AS startDate, 
-		yearperiod_end AS endDate
-
-	FROM
-		yearperiod
-
-	WHERE
-		yearperiod_start < current_date and yearperiod_end > current_date
-	
 <? else ?>
-
-	SELECT date_trunc(<? value("timeFrame") ?>, current_date) AS startDate,
-       date_trunc(<? value("timeFrame") ?>, current_date) + <? value("interval") ?>  + '-1 day' AS endDate
+  SELECT date_trunc(<? value("timeFrame") ?>, current_date) AS startDate,
+         date_trunc(<? value("timeFrame") ?>, current_date) + <? value("interval") ?> + '-1 day' AS endDate
 
 <? endif ?>
-	   
+

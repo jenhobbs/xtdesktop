@@ -1,18 +1,16 @@
 -- Group:desktop
 -- Name:cmmntPrefUser
--- Notes: 
--- Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
+-- Notes:
+-- Copyright (c) 1999-2016 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 
 SELECT usr_id, usr_username
-FROM usr 
+FROM usr
 WHERE (usr_username=current_user)
 UNION
 SELECT usr_id, usr_username AS usr_username
 FROM usr
 WHERE ((usr_active = true)
     AND(usr_username <> current_user))
-ORDER BY usr_username; 
-
-
+ORDER BY usr_username;
 

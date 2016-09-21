@@ -1,7 +1,7 @@
 CREATE OR REPLACE FUNCTION xtdesktop.fetchxtupleserverhtml()
   RETURNS text AS
 $BODY$
--- Copyright (c) 1999-2015 by OpenMFG LLC, d/b/a xTuple.
+-- Copyright (c) 1999-2016 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 DECLARE
   _html TEXT;
