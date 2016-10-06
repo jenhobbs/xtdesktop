@@ -19,6 +19,7 @@
   ;
 
   _buttonBox.accepted.connect(save);
+  _buttonBox.button(QDialogButtonBox.Apply).clicked.connect(save);
   _interfaceWorkspace.toggled.connect(desktopNotice);
   _user["newID(int)"].connect(sUserChanged);
 
