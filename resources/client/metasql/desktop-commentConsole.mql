@@ -1,7 +1,7 @@
 -- Group: desktop
 -- Name:  commentConsole
 -- Notes: Comment Console Query - update for OPP in 3.8
--- Copyright (c) 1999-2016 by OpenMFG LLC, d/b/a xTuple.
+-- Copyright (c) 1999-2017 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 
 SELECT
@@ -167,7 +167,22 @@ SELECT
                FROM curr_symbol
                WHERE((comment_source_id = curr_id)
                  AND (comment_source = 'FX')))
-
+-- Fixed Asset
+ <? if exists("asset_exist") ?>
+        WHEN comment_source = 'FADOC' THEN
+              (SELECT asset_code || ' - ' || asset_name
+               FROM asset.asset
+               WHERE comment_source_id = asset.id
+                 AND comment_source = 'FADOC')
+ <? endif ?>
+-- Fixed Asset Maintenance Order
+ <? if exists("maint_exist") ?>
+        WHEN comment_source = 'FAMAINT' THEN
+              (SELECT maintorder_number || ' - ' || maintorder_descr
+               FROM assetmaint.maint_order
+               WHERE comment_source_id = maintorder_id
+                 AND comment_source = 'FAMAINT')
+ <? endif ?>
 -- Incident
         WHEN comment_source = 'INCDT' THEN
               (

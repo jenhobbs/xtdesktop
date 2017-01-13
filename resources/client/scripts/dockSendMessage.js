@@ -9,6 +9,7 @@ var _b2CommentConsole;
 var _commentConsole;
 var _commentConsoleIsDirty = true;
 var _periodId = -1;
+var _prefs = preferences,
 
 function initDockSendMessage()
 {
@@ -45,30 +46,33 @@ function initDockSendMessage()
   _commentConsole.addColumn("Detail",         -1,  1, true, "info");
   _commentConsole.addColumn("Points",         40,  3, true, "points");
 
-  mainwindow.itemsitesUpdated.connect(refreshCommentConsole);
-  mainwindow.warehousesUpdated.connect(refreshCommentConsole);
-  mainwindow.customersUpdated.connect(refreshCommentConsole)
-  mainwindow.employeeUpdated.connect(refreshCommentConsole);
-  mainwindow.vendorsUpdated.connect(refreshCommentConsole);
-  mainwindow.returnAuthorizationsUpdated.connect(refreshCommentConsole);
-  mainwindow.salesOrdersUpdated.connect(refreshCommentConsole)
-  mainwindow.quotesUpdated.connect(refreshCommentConsole);
-  mainwindow.workOrdersUpdated.connect(refreshCommentConsole);
-  mainwindow.purchaseOrdersUpdated.connect(refreshCommentConsole);
-  mainwindow.bomsUpdated.connect(refreshCommentConsole)
-  mainwindow.bbomsUpdated.connect(refreshCommentConsole);
-  mainwindow.boosUpdated.connect(refreshCommentConsole);
-  mainwindow.projectsUpdated.connect(refreshCommentConsole);
-  mainwindow.crmAccountsUpdated.connect(refreshCommentConsole)
-  mainwindow.transferOrdersUpdated.connect(refreshCommentConsole);
+  if (!_prefs.boolean("xtdesktop/manualConsoleRefresh"))
+  {
+    mainwindow.itemsitesUpdated.connect(refreshCommentConsole);
+    mainwindow.warehousesUpdated.connect(refreshCommentConsole);
+    mainwindow.customersUpdated.connect(refreshCommentConsole)
+    mainwindow.employeeUpdated.connect(refreshCommentConsole);
+    mainwindow.vendorsUpdated.connect(refreshCommentConsole);
+    mainwindow.returnAuthorizationsUpdated.connect(refreshCommentConsole);
+    mainwindow.salesOrdersUpdated.connect(refreshCommentConsole)
+    mainwindow.quotesUpdated.connect(refreshCommentConsole);
+    mainwindow.workOrdersUpdated.connect(refreshCommentConsole);
+    mainwindow.purchaseOrdersUpdated.connect(refreshCommentConsole);
+    mainwindow.bomsUpdated.connect(refreshCommentConsole)
+    mainwindow.bbomsUpdated.connect(refreshCommentConsole);
+    mainwindow.boosUpdated.connect(refreshCommentConsole);
+    mainwindow.projectsUpdated.connect(refreshCommentConsole);
+    mainwindow.crmAccountsUpdated.connect(refreshCommentConsole)
+    mainwindow.transferOrdersUpdated.connect(refreshCommentConsole);
+
+    mainwindow["tick()"].connect(refreshCommentConsole);
+  }
 
   _b1CommentConsole.clicked.connect(refreshCommentConsole);
   _b2CommentConsole.clicked.connect(preferencesCommentConsole);
 
   _commentConsole["populateMenu(QMenu*,XTreeWidgetItem*,int)"]
     .connect(populateMenuCommentConsole);
-
-  mainwindow["tick()"].connect(refreshCommentConsole);
 
   var act = _dockSendMessage.toggleViewAction();
   if (!privileges.check("viewSendMsgDock"))
@@ -162,7 +166,9 @@ function fillListCommentConsole()
               + "       EXISTS(SELECT 1"
               + "                FROM pg_class JOIN pg_namespace n ON relnamespace = n.oid"
               + "               WHERE relname = 'rev') AS hasRev,"
-              + "       EXISTS(SELECT 1 FROM pkghead WHERE pkghead_name = 'xtmfg') AS hasMFG"
+              + "       EXISTS(SELECT 1 FROM pkghead WHERE pkghead_name = 'xtmfg') AS hasMFG,"
+              + "       EXISTS(SELECT 1 FROM pkghead WHERE pkghead_name = 'asset') AS hasAsset,"
+              + "       EXISTS(SELECT 1 FROM pkghead WHERE pkghead_name = 'assetmaint') AS hasMaint"
               + ";";
 
   params.startOffSet = ((preferences.value("MonitoredCommentStrtDate") != '')?preferences.value("MonitoredCommentStrtDate"):-1);
@@ -176,6 +182,10 @@ function fillListCommentConsole()
       params.hasRev  = 'hasRev';    // mql uses <? if exists() ?>
     if (data.value("hasMFG"))
       params.xtmfg_exist = 'hasMFG';
+    if (data.value("hasAsset"))
+      params.asset_exist = 'hasAsset';
+    if (data.value("hasMaint"))
+      params.maint_exist = 'hasMaint';
   }
   else if (data.lastError().type != QSqlError.NoError)
   {
@@ -249,6 +259,10 @@ function populateMenuCommentConsole(pMenu, pItem, pCol)
                         id: "cust_id", uiform: "customer",                 wflags: Qt.Window };
     lookup['EMP']   = { editPriv: "MaintainEmployees",       viewPriv: "ViewEmployees",
                         id: "emp_id", uiform: "employee",                  wflags: Qt.Dialog };
+    lookup['FADOC'] = { editPriv: "MaintainFixedAsset",      viewPriv: "ViewFixedAsset",
+                        id: "id", uiform: "fixedAsset",                    wflags: Qt.Dialog };
+    lookup['FAMAINT'] = { editPriv: "MaintainMaintenanceOrder", viewPriv: "MaintainMaintenanceOrder",
+                        id: "maintorder_id", uiform: "maintOrder",         wflags: Qt.Dialog };
     lookup['INCDT'] = { editPriv: "MaintainPersonalIncidents   MaintainAllIncidents",
                         viewPriv: "ViewPersonalIncidents       ViewAllIncidents",
                         id: "incdt_id", uiform: "incident",                wflags: Qt.Window };
