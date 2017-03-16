@@ -1602,37 +1602,6 @@
     </message>
 </context>
 <context>
-    <name>dockSendMessage</name>
-    <message>
-        <source>Reload</source>
-        <translation type="unfinished">Recharger</translation>
-    </message>
-    <message>
-        <source>Preferences...</source>
-        <translation type="unfinished">Préférences...</translation>
-    </message>
-    <message>
-        <source>Send Message?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You are trying to Send Message to Yourself. Are you sure that you really want to Continue?.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Database Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>dockUserOnline</name>
     <message>
         <source># Internal</source>
@@ -1913,6 +1882,10 @@ Are you sure that you really want to Continue?.</source>
     </message>
     <message>
         <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manual Refresh Comment Console</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
