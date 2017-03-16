@@ -555,7 +555,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uiforms/desktopMenuBar.ui" line="73"/>
+        <location filename="../uiforms/desktopMenuBar.ui" line="76"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Employee&lt;/p&gt;&lt;p&gt;Name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2005,44 +2005,6 @@
     </message>
 </context>
 <context>
-    <name>dockSendMessage</name>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="31"/>
-        <source>Reload</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="37"/>
-        <source>Preferences...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="115"/>
-        <source>Send Message?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="116"/>
-        <source>You are trying to Send Message to Yourself. Are you sure that you really want to Continue?.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="182"/>
-        <source>Database Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="310"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../scripts/dockSendMessage.js" line="314"/>
-        <source>View</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>dockUserOnline</name>
     <message>
         <location filename="../scripts/dockUserOnline.js" line="24"/>
@@ -2103,17 +2065,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="99"/>
+        <location filename="../scripts/initMenu.js" line="109"/>
         <source>Welcome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="112"/>
+        <location filename="../scripts/initMenu.js" line="122"/>
         <source>Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/initMenu.js" line="157"/>
+        <location filename="../scripts/initMenu.js" line="167"/>
         <source>Sites</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2386,12 +2348,18 @@ Are you sure that you really want to Continue?.</source>
 <context>
     <name>userPreferences</name>
     <message>
-        <location filename="../scripts/userPreferences.js" line="30"/>
+        <location filename="../scripts/userPreferences.js" line="34"/>
         <source>Use Native Application Styling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/userPreferences.js" line="62"/>
+        <location filename="../scripts/userPreferences.js" line="37"/>
+        <source>Manual Refresh Comment Console</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/userPreferences.js" line="76"/>
+        <location filename="../scripts/userPreferences.js" line="88"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
