@@ -214,7 +214,7 @@ function addToolBarAction(label, imageName, privilege)
 
     _vToolBarActions.push(act);
 
-    if (!privilege || privileges.check(privilege))
+    if (_mainMenu && (! privilege || privileges.check(privilege)))
       menuItem = new XTreeWidgetItem(_mainMenu, _vToolBarActions.length,
                                      _vToolBarActions.length, label);
   }
