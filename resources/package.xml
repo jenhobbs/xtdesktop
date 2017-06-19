@@ -2,7 +2,7 @@
          name      = "xtdesktop"
          developer = "xTuple"
          descrip   = "xTuple Desktop"
-         version   = "4.0.7"
+         version   = "4.0.8"
          updater   = "2.4.0Beta">
   <pkgnotes>
         xTuple Desktop navigational interface for the xTuple main window.
