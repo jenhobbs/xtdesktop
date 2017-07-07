@@ -1616,6 +1616,37 @@
     </message>
 </context>
 <context>
+    <name>dockSendMessage</name>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished">重載</translation>
+    </message>
+    <message>
+        <source>Preferences...</source>
+        <translation type="unfinished">偏好 ...</translation>
+    </message>
+    <message>
+        <source>Send Message?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are trying to Send Message to Yourself. Are you sure that you really want to Continue?.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>dockUserOnline</name>
     <message>
         <source># External</source>

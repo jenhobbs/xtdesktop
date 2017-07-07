@@ -9,7 +9,7 @@ var _b2CommentConsole;
 var _commentConsole;
 var _commentConsoleIsDirty = true;
 var _periodId = -1;
-var _prefs = preferences,
+var _prefs = preferences;
 
 function initDockSendMessage()
 {

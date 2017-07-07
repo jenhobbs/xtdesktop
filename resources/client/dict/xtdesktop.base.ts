@@ -2005,6 +2005,44 @@
     </message>
 </context>
 <context>
+    <name>dockSendMessage</name>
+    <message>
+        <location filename="../scripts/dockSendMessage.js" line="32"/>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/dockSendMessage.js" line="38"/>
+        <source>Preferences...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/dockSendMessage.js" line="119"/>
+        <source>Send Message?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/dockSendMessage.js" line="120"/>
+        <source>You are trying to Send Message to Yourself. Are you sure that you really want to Continue?.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/dockSendMessage.js" line="192"/>
+        <source>Database Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/dockSendMessage.js" line="324"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../scripts/dockSendMessage.js" line="328"/>
+        <source>View</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>dockUserOnline</name>
     <message>
         <location filename="../scripts/dockUserOnline.js" line="24"/>
