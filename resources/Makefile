@@ -10,12 +10,47 @@ PKG = $(shell awk '/name *=/ { split($$0, ary, "[\"= ]*");	\
 				      print ary[i + 1] ; exit;	\
 				    } } }' package.xml)
 
-TAROPTS = -h --exclude Makefile --exclude .\*
+DIR = $(shell awk '/id *=/   { split($$0, ary, "[\"= ]*");	\
+                                  for (i in ary) {		\
+				    if (ary[i] == "id") {	\
+				      print ary[i + 1] ; exit;	\
+				    } } }' package.xml)
 
-all: ../packages/$(PKG)-$(VER).gz
+EXCLUDE = --exclude Makefile --exclude .\*
+TAROPTS = -h
 
-../packages/$(PKG)-$(VER).gz: FORCE
-	[ `uname -s` = Linux ]
-	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) resources
+all: FORCE
+	if [ ! -e client/dict/$(PKG)_ts.pro ] ; then \
+	  cd client ; \
+	  find * -name *.ui -printf '        ../%p \\\n' | sort | \
+	   sed -e '1 s/        /FORMS = /' -e '$$ s/ \\//' >> \
+	   dict/$(PKG)_ts.pro ; \
+	  echo "" >> dict/$(PKG)_ts.pro ; \
+	  find * -name *.js -printf '          ../%p \\\n' | sort | \
+	   sed -e '1 s/          /SOURCES = /' -e '$$ s/ \\//' >> \
+	   dict/$(PKG)_ts.pro ; \
+	  echo "" >> dict/$(PKG)_ts.pro ; \
+	  find * -name *.ts -printf '               %f \\\n' | sort | \
+	   sed -e '1 s/               /TRANSLATIONS = /' -e '$$ s/ \\//' >> \
+	   dict/$(PKG)_ts.pro ; \
+	fi
+
+	lupdate -no-obsolete client/dict/$(PKG)_ts.pro
+	lrelease client/dict/$(PKG)_ts.pro
+
+	sed -i '/loadqm/d' package.xml
+	sed -i '/<\/package>/d' package.xml
+
+	for TRANSLATION in $$(find client/dict -name *.qm | sort) ; do \
+	 if ! echo $$TRANSLATION | grep -q 'base' ; then \
+	   echo '  <loadqm file="'$$TRANSLATION'"/>' >> package.xml ; \
+	  fi \
+	done
+
+	echo '</package>' >> package.xml
+
+	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) $(EXCLUDE) $(DIR)
+
+	rm client/dict/*.qm
 
 FORCE:

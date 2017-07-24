@@ -310,4 +310,32 @@ This package is an extension for xTuple ERP: PostBooks Edition, a free and open 
   <loadimage      file="client/images/xtuple-dashboard_48.png" name="xtuple-dashboard_48"/>
 
 
+  <loadqm file="client/dict/xtdesktop.ar_eg.qm"/>
+  <loadqm file="client/dict/xtdesktop.bg.qm"/>
+  <loadqm file="client/dict/xtdesktop.cn.qm"/>
+  <loadqm file="client/dict/xtdesktop.cs.qm"/>
+  <loadqm file="client/dict/xtdesktop.de_at.qm"/>
+  <loadqm file="client/dict/xtdesktop.de_ch.qm"/>
+  <loadqm file="client/dict/xtdesktop.de.qm"/>
+  <loadqm file="client/dict/xtdesktop.en_ca.qm"/>
+  <loadqm file="client/dict/xtdesktop.es_ar.qm"/>
+  <loadqm file="client/dict/xtdesktop.es_mx.qm"/>
+  <loadqm file="client/dict/xtdesktop.es.qm"/>
+  <loadqm file="client/dict/xtdesktop.et_ee.qm"/>
+  <loadqm file="client/dict/xtdesktop.fr_ca.qm"/>
+  <loadqm file="client/dict/xtdesktop.fr.qm"/>
+  <loadqm file="client/dict/xtdesktop.hr.qm"/>
+  <loadqm file="client/dict/xtdesktop.it.qm"/>
+  <loadqm file="client/dict/xtdesktop.jp.qm"/>
+  <loadqm file="client/dict/xtdesktop.nl.qm"/>
+  <loadqm file="client/dict/xtdesktop.no.qm"/>
+  <loadqm file="client/dict/xtdesktop.pl.qm"/>
+  <loadqm file="client/dict/xtdesktop.pt_br.qm"/>
+  <loadqm file="client/dict/xtdesktop.pt.qm"/>
+  <loadqm file="client/dict/xtdesktop.ru.qm"/>
+  <loadqm file="client/dict/xtdesktop.sk.qm"/>
+  <loadqm file="client/dict/xtdesktop.tr.qm"/>
+  <loadqm file="client/dict/xtdesktop.ua.qm"/>
+  <loadqm file="client/dict/xtdesktop.zh_hk.qm"/>
+  <loadqm file="client/dict/xtdesktop.zh_tw.qm"/>
 </package>
