@@ -55,7 +55,6 @@ SOURCES = ../scripts/contact.js \
 TRANSLATIONS = xtdesktop.ar_eg.ts \
                xtdesktop.base.ts \
                xtdesktop.bg.ts \
-               xtdesktop.cn.ts \
                xtdesktop.cs.ts \
                xtdesktop.de_at.ts \
                xtdesktop.de_ch.ts \
@@ -69,7 +68,7 @@ TRANSLATIONS = xtdesktop.ar_eg.ts \
                xtdesktop.fr.ts \
                xtdesktop.hr.ts \
                xtdesktop.it.ts \
-               xtdesktop.jp.ts \
+               xtdesktop.ja.ts \
                xtdesktop.nl.ts \
                xtdesktop.no.ts \
                xtdesktop.pl.ts \
@@ -78,6 +77,7 @@ TRANSLATIONS = xtdesktop.ar_eg.ts \
                xtdesktop.ru.ts \
                xtdesktop.sk.ts \
                xtdesktop.tr.ts \
-               xtdesktop.ua.ts \
+               xtdesktop.uk.ts \
                xtdesktop.zh_hk.ts \
+               xtdesktop.zh.ts \
                xtdesktop.zh_tw.ts
