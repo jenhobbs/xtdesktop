@@ -142,16 +142,13 @@ SELECT
         WHEN comment_source = 'C' THEN
               (SELECT cust_number || ' - ' || cust_name FROM custinfo WHERE (cust_id = comment_source_id) AND (comment_source = 'C'))
 
--- Credit Memo - Return Auth
+-- CRM Account
   <? if exists("xtmfg_exist") ?>
         WHEN comment_source = 'CRMA' THEN
-              (SELECT 'Credit Memo:  ' || cmhead_number || '  Return Auth: ' || rahead_number || '  Customer  ' || cust_number || ' - ' || cust_name
-                       FROM rahead, cmhead, custinfo
-                       WHERE
-                            ((cmhead_rahead_id = rahead_id)
-                         AND (cmhead_cust_id = cust_id)
-                         AND (cmhead_id = comment_source_id)
-                         AND (comment_source = 'CRMA')))
+              (SELECT crmacct_number || '-' || crmacct_name
+               FROM crmacct
+               WHERE crmacct_id = comment_source_id
+               AND   comment_source = 'CRMA')
  <? endif ?>
 
 -- Employee
