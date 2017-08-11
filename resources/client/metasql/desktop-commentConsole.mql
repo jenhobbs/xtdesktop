@@ -143,13 +143,11 @@ SELECT
               (SELECT cust_number || ' - ' || cust_name FROM custinfo WHERE (cust_id = comment_source_id) AND (comment_source = 'C'))
 
 -- CRM Account
-  <? if exists("xtmfg_exist") ?>
         WHEN comment_source = 'CRMA' THEN
               (SELECT crmacct_number || '-' || crmacct_name
                FROM crmacct
                WHERE crmacct_id = comment_source_id
                AND   comment_source = 'CRMA')
- <? endif ?>
 
 -- Employee
         WHEN comment_source = 'EMP' THEN
