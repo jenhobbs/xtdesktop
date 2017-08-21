@@ -38,19 +38,23 @@ all: FORCE
 	lupdate -no-obsolete client/dict/$(PKG)_ts.pro
 	lrelease client/dict/$(PKG)_ts.pro
 
-	sed -i '/loadqm/d' package.xml
-	sed -i '/<\/package>/d' package.xml
+	rm client/dict/translations.xml
+	echo '<qm>' >> client/dict/translations.xml
 
 	for TRANSLATION in $$(find client/dict -name *.qm | sort) ; do \
-	 if ! echo $$TRANSLATION | grep -q 'base' ; then \
-	   echo '  <loadqm file="'$$TRANSLATION'"/>' >> package.xml ; \
+	 if ! expr $$TRANSLATION : '.*base.*' ; then \
+	   echo '  <loadqm file="'$$TRANSLATION'"/>' >> client/dict/translations.xml ; \
 	  fi \
 	done
 
-	echo '</package>' >> package.xml
+	echo '</qm>' >> client/dict/translations.xml
+
+	cp package.xml ../package.xml
+	xsltproc -o package.xml client/dict/build.xsl package.xml
 
 	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) $(EXCLUDE) $(DIR)
 
 	rm client/dict/*.qm
+	mv ../package.xml .
 
 FORCE:
