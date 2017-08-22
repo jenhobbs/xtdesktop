@@ -1,7 +1,7 @@
 -- Group: desktop
 -- Name:  mfgHist
 -- Notes: Summarized Manufacture History for Desktop
--- Copyright (c) 1999-2016 by OpenMFG LLC, d/b/a xTuple.
+-- Copyright (c) 1999-2017 by OpenMFG LLC, d/b/a xTuple.
 -- See www.xtuple.com/CPAL for the full text of the software license.
 
 SELECT <? literal("group_id") ?>, <? literal("group_number") ?>,  <? literal("group_name") ?>,
@@ -17,8 +17,8 @@ FROM invhist
   JOIN classcode ON (classcode_id=item_classcode_id)
 WHERE ((invhist_transtype = 'RM')
   AND (invhist_ordtype = 'WO')
-  AND ((invhist_transdate > DATE <? value("startDate") ?> - 1 AND
-        invhist_transdate < DATE <? value("endDate") ?> + 1) )
+  AND ((invhist_transdate > (<? value("startDate") ?>)::DATE - 1 AND
+        invhist_transdate < (<? value("endDate") ?>)::DATE + 1) )
 )
 GROUP BY <? literal("group_id") ?>, <? literal("group_number") ?>, <? literal("group_name") ?>
 ORDER BY <? literal("group_number") ?>
