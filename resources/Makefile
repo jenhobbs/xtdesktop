@@ -16,45 +16,26 @@ DIR = $(shell awk '/id *=/   { split($$0, ary, "[\"= ]*");	\
 				      print ary[i + 1] ; exit;	\
 				    } } }' package.xml)
 
-EXCLUDE = --exclude Makefile --exclude .\*
+EXCLUDE = --exclude Makefile --exclude client/dict/build.xsl
 TAROPTS = -h
 
-all: FORCE
-	if [ ! -e client/dict/$(PKG)_ts.pro ] ; then \
-	  cd client ; \
-	  find * -name *.ui -printf '        ../%p \\\n' | sort | \
-	   sed -e '1 s/        /FORMS = /' -e '$$ s/ \\//' >> \
-	   dict/$(PKG)_ts.pro ; \
-	  echo "" >> dict/$(PKG)_ts.pro ; \
-	  find * -name *.js -printf '          ../%p \\\n' | sort | \
-	   sed -e '1 s/          /SOURCES = /' -e '$$ s/ \\//' >> \
-	   dict/$(PKG)_ts.pro ; \
-	  echo "" >> dict/$(PKG)_ts.pro ; \
-	  find * -name *.ts -printf '               %f \\\n' | sort | \
-	   sed -e '1 s/               /TRANSLATIONS = /' -e '$$ s/ \\//' >> \
-	   dict/$(PKG)_ts.pro ; \
-	fi
-
-	lupdate -no-obsolete client/dict/$(PKG)_ts.pro
-	lrelease client/dict/$(PKG)_ts.pro
-
-	rm client/dict/translations.xml
-	echo '<qm>' >> client/dict/translations.xml
-
-	for TRANSLATION in $$(find client/dict -name *.qm | sort) ; do \
-	 if ! expr $$TRANSLATION : '.*base.*' ; then \
-	   echo '  <loadqm file="'$$TRANSLATION'"/>' >> client/dict/translations.xml ; \
-	  fi \
-	done
-
-	echo '</qm>' >> client/dict/translations.xml
+all:
+	cd client/dict && make
 
 	cp package.xml ../package.xml
 	xsltproc -o package.xml client/dict/build.xsl package.xml
+	rm client/dict/translations.xml
 
 	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) $(EXCLUDE) $(DIR)
 
 	rm client/dict/*.qm
 	mv ../package.xml .
 
-FORCE:
+no-translations:
+	cp package.xml ../package.xml
+	sed -i 's/\(updater\s*=\s*\)"2.5.0Beta"/\1"2.4.0Beta"/' package.xml
+	sed -i '/<translations\/>/d' package.xml
+
+	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) $(EXCLUDE) $(DIR)
+
+	mv ../package.xml package.xml
