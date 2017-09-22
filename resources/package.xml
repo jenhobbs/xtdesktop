@@ -3,7 +3,7 @@
          developer = "xTuple"
          descrip   = "xTuple Desktop"
          version   = "4.0.8"
-         updater   = "2.4.0Beta">
+         updater   = "2.5.0Beta">
   <pkgnotes>
         xTuple Desktop navigational interface for the xTuple main window.
 
@@ -310,4 +310,5 @@ This package is an extension for xTuple ERP: PostBooks Edition, a free and open 
   <loadimage      file="client/images/xtuple-dashboard_48.png" name="xtuple-dashboard_48"/>
 
 
+  <translations/>
 </package>
