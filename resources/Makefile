@@ -1,20 +1,12 @@
 # extract version number from the package.xml
-VER = $(shell awk '/version *=/ { split($$0, ary, "[\"= ]*");	\
-                                  for (i in ary) {		\
-				    if (ary[i] == "version") {	\
-				      print ary[i + 1] ; exit;	\
-				    } } }' package.xml)
-PKG = $(shell awk '/name *=/ { split($$0, ary, "[\"= ]*");	\
-                                  for (i in ary) {		\
-				    if (ary[i] == "name") {	\
-				      print ary[i + 1] ; exit;	\
-				    } } }' package.xml)
-
-DIR = $(shell awk '/id *=/   { split($$0, ary, "[\"= ]*");	\
-                                  for (i in ary) {		\
-				    if (ary[i] == "id") {	\
-				      print ary[i + 1] ; exit;	\
-				    } } }' package.xml)
+EXTRACT = awk '/XXX *=/ { split($$0, ary, "[\"= ]*");	\
+                          for (i in ary) {		\
+			    if (ary[i] == "XXX") {	\
+			      print ary[i + 1] ; exit;	\
+			   } } }' package.xml
+VER = $(shell $(subst XXX,version,$(EXTRACT)))
+PKG = $(shell $(subst XXX,name,   $(EXTRACT)))
+DIR = $(shell $(subst XXX,id,     $(EXTRACT)))
 
 EXCLUDE = --exclude Makefile --exclude client/dict/build.xsl
 TAROPTS = -h
