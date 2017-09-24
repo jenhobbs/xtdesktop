@@ -1473,27 +1473,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockMyTodo.js" line="187"/>
+        <location filename="../scripts/dockMyTodo.js" line="188"/>
         <source>To-do</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockMyTodo.js" line="188"/>
+        <location filename="../scripts/dockMyTodo.js" line="189"/>
         <source>Incident</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockMyTodo.js" line="189"/>
+        <location filename="../scripts/dockMyTodo.js" line="190"/>
         <source>Task</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockMyTodo.js" line="190"/>
+        <location filename="../scripts/dockMyTodo.js" line="191"/>
         <source>Project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../scripts/dockMyTodo.js" line="157"/>
+        <location filename="../scripts/dockMyTodo.js" line="158"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>

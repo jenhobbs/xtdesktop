@@ -1,13 +1,13 @@
 all:
-	find .. -name '*.ui' -printf 'FORMS+=%p\n' >> ts.pro
-	find .. -name '*.js' -printf 'SOURCES+=%p\n' >> ts.pro
-	find * -name '*.ts' -printf 'TRANSLATIONS+=%p\n' >> ts.pro
+	find .. -name '*.ui' -exec echo FORMS       +={} \; >  ts.pro
+	find .. -name '*.js' -exec echo SOURCES     +={} \; >> ts.pro
+	find * -name '*.ts'  -exec echo TRANSLATIONS+={} \; >> ts.pro
 
 	lupdate -no-obsolete ts.pro
 	lrelease ts.pro
 	rm ts.pro
 
-	echo '<qm>' >> translations.xml
+	echo '<qm>' > translations.xml
 
 	for TRANSLATION in $$(find * -name '*.qm' | sort) ; do \
 	  if ! expr $$TRANSLATION : '.*base.*' ; then \
