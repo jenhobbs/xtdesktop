@@ -25,8 +25,9 @@ all:
 
 no-translations:
 	cp package.xml ../package.xml
-	sed -i 's/\(updater\s*=\s*\)"2.5.0Beta"/\1"2.4.0Beta"/' package.xml
-	sed -i '/<translations\/>/d' package.xml
+	sed -i "" \
+	    -e 's/\(updater[ 	]*=[ 	]*\)"2.5.0Beta"/\1"2.4.0Beta"/p' \
+	    -e '/<translations\/>/d' package.xml
 
 	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) $(EXCLUDE) $(DIR)
 
