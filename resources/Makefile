@@ -8,6 +8,13 @@ VER = $(shell $(subst XXX,version,$(EXTRACT)))
 PKG = $(shell $(subst XXX,name,   $(EXTRACT)))
 DIR = $(shell $(subst XXX,id,     $(EXTRACT)))
 
+SED_I = $(shell sed -i "" -e "s/Z/Z/" Makefile 2>/dev/null || echo failed)
+ifeq ($(SED_I),failed)
+  SED_I = sed -i
+else
+  SED_I = sed -i ""
+endif
+
 EXCLUDE = --exclude Makefile --exclude client/dict/build.xsl
 TAROPTS = -h
 
@@ -25,8 +32,8 @@ all:
 
 no-translations:
 	cp package.xml ../package.xml
-	sed -i "" \
-	    -e 's/\(updater[ 	]*=[ 	]*\)"2.5.0Beta"/\1"2.4.0Beta"/p' \
+	$(SED_I) \
+	    -e 's/\(updater[ 	]*=[ 	]*\)"2.5.0Beta"/\1"2.4.0Beta"/' \
 	    -e '/<translations\/>/d' package.xml
 
 	cd .. && tar czf packages/$(PKG)-$(VER).gz $(TAROPTS) $(EXCLUDE) $(DIR)
