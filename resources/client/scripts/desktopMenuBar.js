@@ -1,7 +1,7 @@
 /*
  * This file is part of the xTuple ERP: PostBooks Edition, a free and
  * open source Enterprise Resource Planning software suite,
- * Copyright (c) 1999-2016 by OpenMFG LLC, d/b/a xTuple.
+ * Copyright (c) 1999-2017 by OpenMFG LLC, d/b/a xTuple.
  * It is licensed to you under the Common Public Attribution License
  * version 1.0, the full text of which (including xTuple-specific Exhibits)
  * is available at www.xtuple.com/CPAL.  By using this software, you agree
@@ -26,7 +26,7 @@ function setupDesktopMenu() {
   shortcutsMenuPopulateList();
 
   var _employeeSql = "SELECT 0 as sort, crmacct_name, crmacct_usr_username "
-                + "FROM emp JOIN crmacct ON (emp_id=crmacct_emp_id) "
+                + "FROM emp JOIN crmacct ON (emp_crmacct_id=crmacct_id) "
                 + "WHERE crmacct_usr_username = geteffectivextuser() "
                 + "UNION SELECT 1 as sort, geteffectivextuser(), usr_propername "
                 + "FROM usr WHERE usr_username = geteffectivextuser() "
