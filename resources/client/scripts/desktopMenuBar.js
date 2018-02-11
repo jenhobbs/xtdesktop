@@ -1,7 +1,7 @@
 /*
  * This file is part of the xTuple ERP: PostBooks Edition, a free and
  * open source Enterprise Resource Planning software suite,
- * Copyright (c) 1999-2017 by OpenMFG LLC, d/b/a xTuple.
+ * Copyright (c) 1999-2018 by OpenMFG LLC, d/b/a xTuple.
  * It is licensed to you under the Common Public Attribution License
  * version 1.0, the full text of which (including xTuple-specific Exhibits)
  * is available at www.xtuple.com/CPAL.  By using this software, you agree
@@ -25,13 +25,22 @@ function setupDesktopMenu() {
 
   shortcutsMenuPopulateList();
 
+  var params = {};
+  var _ver = metrics.value("ServerVersion").substring(0, 1);
+  if (_ver > 4)
+    params.version = true;
+
   var _employeeSql = "SELECT 0 as sort, crmacct_name, crmacct_usr_username "
+                +    " <? if exists('version') ?> "
                 + "FROM emp JOIN crmacct ON (emp_crmacct_id=crmacct_id) "
+                 + "<? else ?> "
+                + "FROM emp JOIN crmacct ON (emp_id=crmacct_emp_id) "
+                + "<? endif ?> "
                 + "WHERE crmacct_usr_username = geteffectivextuser() "
                 + "UNION SELECT 1 as sort, geteffectivextuser(), usr_propername "
                 + "FROM usr WHERE usr_username = geteffectivextuser() "
                 + "ORDER BY 1 ASC LIMIT 1;       ";
-  var _employeeData = toolbox.executeQuery(_employeeSql);
+  var _employeeData = toolbox.executeQuery(_employeeSql, params);
   if (_employeeData.first()){
     _employee.text = _employeeData.value("crmacct_name");
     _employee.wordWrap = true;
