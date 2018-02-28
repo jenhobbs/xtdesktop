@@ -98,7 +98,7 @@ to be bound by its terms.</comment>
        <item row="2" column="0">
         <widget class="MenuButton" name="_vendorWorkbench">
          <property name="image">
-          <string notr="true">customers_zoom_48</string>
+          <string notr="true">vendor</string>
          </property>
          <property name="label">
           <string>Vendor</string>
